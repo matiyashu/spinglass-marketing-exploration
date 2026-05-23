@@ -26,8 +26,9 @@ Each consumer signal — ad recall, brand link, trust, value-for-money, premium,
 
 The repo ships:
 
-- A small NumPy kernel (`brand_ising_spin_glass.py`) with coupling estimators, a Hopfield memory layer, a Glauber MCMC sampler, and metric helpers.
-- A self-contained simulation + PDF generator (`generate_spin_glass_marketing_report.py`) that reproduces the figures in the included [technical brief](docs/spin_glass_brand_marketing_report.pdf).
+- A small NumPy kernel (`backend/brand_ising_spin_glass.py`) with coupling estimators (signed correlation, Ising, signed mutual-information), a Hopfield memory layer, a Glauber MCMC sampler, mean-field `h`-baseline inference, and metric helpers (`memory_overlap`, `frustration_rate`, `summarize_scenario`).
+- A self-contained simulation + PDF generator (`backend/generate_spin_glass_marketing_report.py`) that reproduces the figures in the included [technical brief](backend/docs/spin_glass_brand_marketing_report.pdf).
+- A reserved `frontend/` folder where the future dashboard will live (see [frontend/README.md](frontend/README.md)).
 - An honest framing of what this is and isn't: a **diagnostic exploration**, not a prediction oracle.
 
 **Why bother.** Standard brand trackers report KPI deltas in isolation. The spin-glass framing forces you to answer the questions KPI tables can't: *do my brand associations move together, or fragment?*, *does this campaign retrieve the memory I intend, or activate the competitor's pattern?*, *is the lift a quick perturbation, or did it deepen a basin?*, *will this impact survive a category shock?*
@@ -40,21 +41,23 @@ The repo ships:
 
 ```bash
 git clone https://github.com/matiyashu/spinglass-marketing-exploration.git
-cd spinglass-marketing-exploration
+cd spinglass-marketing-exploration/backend
 
 python -m venv .venv
 .venv\Scripts\activate          # Windows
 # source .venv/bin/activate     # macOS / Linux
 
 pip install -r requirements.txt
-python generate_spin_glass_marketing_report.py
+
+python brand_ising_spin_glass.py                  # CLI demo of the kernel
+python generate_spin_glass_marketing_report.py    # full PDF + figures
 ```
 
 That produces:
 
 ```
-spin_glass_brand_marketing_report.pdf
-spin_glass_report_figures/
+backend/docs/spin_glass_brand_marketing_report.pdf
+backend/spin_glass_report_figures/
     scenario_metrics.png
     signed_coupling_heatmap.png
     pulse_response.png
@@ -119,10 +122,12 @@ Five figures unpack what is moving:
 ## The kernel, in one screen
 
 ```python
+# from backend/
 from brand_ising_spin_glass import (
     FEATURES, binarize_to_spins, corr_couplings, mi_couplings,
     memory_couplings, infer_mean_field_baseline,
     glauber_sample, memory_overlap, frustration_rate,
+    summarize_scenario, ScenarioResult,
 )
 
 # 1. Spins from your panel
@@ -154,19 +159,28 @@ The module is intentionally tiny (~250 LOC, NumPy + pandas). Everything else —
 ```
 spinglass-marketing-exploration/
 ├── README.md
-├── requirements.txt
+├── LICENSE
 ├── .gitignore
 ├── assets/
 │   └── banner.svg
-├── brand_ising_spin_glass.py                  # the kernel
-├── generate_spin_glass_marketing_report.py    # figures + PDF builder
-├── docs/
-│   └── spin_glass_brand_marketing_report.pdf  # 12-page technical brief
-├── spin_glass_report_figures/                 # rendered PNGs (after running)
-└── skills/                                    # LOCAL ONLY — gitignored
+├── backend/                                       # Python kernel + report builder
+│   ├── README.md
+│   ├── requirements.txt
+│   ├── brand_ising_spin_glass.py                  # the kernel + demo()
+│   ├── generate_spin_glass_marketing_report.py    # figures + PDF builder
+│   ├── docs/
+│   │   └── spin_glass_brand_marketing_report.pdf  # 12-page technical brief
+│   └── spin_glass_report_figures/                 # rendered PNGs (after running)
+├── frontend/                                      # Reserved for future dashboard
+│   └── README.md
+└── skills/                                        # LOCAL ONLY — gitignored
     ├── claude-mem/
     └── superpowers/
 ```
+
+The split mirrors the planned shape: **backend** is the research kernel and
+report generator today, and will host a FastAPI layer when the dashboard
+arrives; **frontend** is the placeholder for that dashboard.
 
 `skills/` is **excluded from git** via `.gitignore`. It exists only on the local clone for AI-assisted development and never leaves this machine.
 
@@ -212,8 +226,8 @@ For AI-assisted development this project pulls in two skill libraries **locally*
 ```bash
 # from repo root, after .gitignore is in place
 mkdir -p skills
-git clone https://github.com/thedotmack/claude-mem skills/claude-mem
-git clone https://github.com/obra/superpowers     skills/superpowers
+git clone --depth 1 https://github.com/thedotmack/claude-mem skills/claude-mem
+git clone --depth 1 https://github.com/obra/superpowers     skills/superpowers
 ```
 
 The `skills/` entry in `.gitignore` ensures these stay on your machine. Refer to each repo's own README for setup and usage; nothing in this project depends on them at runtime.
