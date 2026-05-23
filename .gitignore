@@ -1,0 +1,33 @@
+# --- Local-only skills (do NOT push) ---
+skills/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.python-version
+
+# --- Generated figures cache ---
+# Keep the rendered PDF and reference figures committed; ignore scratch outputs.
+spin_glass_report_figures/_scratch/
+
+# --- Editors / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Notebooks ---
+.ipynb_checkpoints/
+
+# --- Local data drops ---
+data/local/
+*.local.csv
+*.local.xlsx
+
+# --- Misc ---
+*.log
+_ref_*.txt
