@@ -7,17 +7,16 @@ import {
   BookOpen,
   ClipboardList,
   FileBarChart,
-  FileText,
   Flame,
   HelpCircle,
   Home,
-  LineChart,
   MountainSnow,
   Network,
   Sparkles,
   Upload,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useMode } from "@/lib/mode";
 
 interface NavItem {
   href: string;
@@ -58,6 +57,7 @@ const GROUPS: NavGroup[] = [
 
 export function Sidebar() {
   const pathname = usePathname();
+  const [mode, setMode] = useMode();
   return (
     <aside className="hidden md:flex md:w-64 md:flex-col border-r bg-card">
       <div className="flex h-16 items-center gap-2 border-b px-5">
@@ -100,22 +100,44 @@ export function Sidebar() {
           </div>
         ))}
       </nav>
-      <div className="border-t p-4 text-[11px] text-muted-foreground">
-        <div className="flex items-center gap-2">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-          <span>Demo mode · client-side only</span>
+      <div className="border-t p-4 space-y-2 text-[11px] text-muted-foreground">
+        <p className="font-semibold uppercase tracking-widest text-muted-foreground/80">Mode</p>
+        <div className="flex rounded-md border bg-muted/50 p-0.5">
+          <button
+            type="button"
+            onClick={() => setMode("demo")}
+            className={cn(
+              "flex-1 rounded px-2 py-1 text-[11px] font-medium transition-colors",
+              mode === "demo" ? "bg-card text-primary shadow-sm" : "text-muted-foreground hover:text-foreground",
+            )}
+          >
+            Demo
+          </button>
+          <button
+            type="button"
+            onClick={() => setMode("live")}
+            className={cn(
+              "flex-1 rounded px-2 py-1 text-[11px] font-medium transition-colors",
+              mode === "live" ? "bg-card text-blue-700 shadow-sm" : "text-muted-foreground hover:text-foreground",
+            )}
+          >
+            Live
+          </button>
         </div>
-        <div className="mt-2 flex items-center gap-1.5">
-          <FileText className="h-3 w-3" />
-          <Link href="/dashboard/reports" className="hover:text-foreground transition-colors">
-            Reports
-          </Link>
-          <span className="text-muted-foreground/40">·</span>
-          <LineChart className="h-3 w-3" />
-          <Link href="/dashboard/scenarios" className="hover:text-foreground transition-colors">
-            Scenarios
-          </Link>
+        <div className="flex items-center gap-2 pt-1">
+          <span
+            className={cn(
+              "h-1.5 w-1.5 rounded-full",
+              mode === "demo" ? "bg-emerald-500" : "bg-blue-500",
+            )}
+          />
+          <span>
+            {mode === "demo" ? "Showing bundled example data" : "Awaiting your uploaded data"}
+          </span>
         </div>
+        <Link href="/" className="block pt-1 hover:text-foreground transition-colors">
+          ← back to landing
+        </Link>
       </div>
     </aside>
   );
