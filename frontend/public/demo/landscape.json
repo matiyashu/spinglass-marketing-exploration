@@ -1,0 +1,484 @@
+{
+  "points": [
+    {
+      "m": -1.0,
+      "baseline": 0.1583,
+      "campaign": 0.7083,
+      "memory": 3.2046
+    },
+    {
+      "m": -0.9747,
+      "baseline": 0.12,
+      "campaign": 0.6561,
+      "memory": 2.9208
+    },
+    {
+      "m": -0.9494,
+      "baseline": 0.0877,
+      "campaign": 0.6099,
+      "memory": 2.6548
+    },
+    {
+      "m": -0.9241,
+      "baseline": 0.061,
+      "campaign": 0.5692,
+      "memory": 2.4057
+    },
+    {
+      "m": -0.8987,
+      "baseline": 0.0395,
+      "campaign": 0.5338,
+      "memory": 2.1731
+    },
+    {
+      "m": -0.8734,
+      "baseline": 0.0228,
+      "campaign": 0.5031,
+      "memory": 1.9561
+    },
+    {
+      "m": -0.8481,
+      "baseline": 0.0104,
+      "campaign": 0.4768,
+      "memory": 1.754
+    },
+    {
+      "m": -0.8228,
+      "baseline": 0.0019,
+      "campaign": 0.4544,
+      "memory": 1.5664
+    },
+    {
+      "m": -0.7975,
+      "baseline": -0.0029,
+      "campaign": 0.4357,
+      "memory": 1.3924
+    },
+    {
+      "m": -0.7722,
+      "baseline": -0.0045,
+      "campaign": 0.4202,
+      "memory": 1.2315
+    },
+    {
+      "m": -0.7468,
+      "baseline": -0.0033,
+      "campaign": 0.4075,
+      "memory": 1.083
+    },
+    {
+      "m": -0.7215,
+      "baseline": 0.0006,
+      "campaign": 0.3974,
+      "memory": 0.9465
+    },
+    {
+      "m": -0.6962,
+      "baseline": 0.0066,
+      "campaign": 0.3896,
+      "memory": 0.8212
+    },
+    {
+      "m": -0.6709,
+      "baseline": 0.0147,
+      "campaign": 0.3836,
+      "memory": 0.7066
+    },
+    {
+      "m": -0.6456,
+      "baseline": 0.0243,
+      "campaign": 0.3794,
+      "memory": 0.6021
+    },
+    {
+      "m": -0.6203,
+      "baseline": 0.0353,
+      "campaign": 0.3764,
+      "memory": 0.5073
+    },
+    {
+      "m": -0.5949,
+      "baseline": 0.0474,
+      "campaign": 0.3746,
+      "memory": 0.4215
+    },
+    {
+      "m": -0.5696,
+      "baseline": 0.0604,
+      "campaign": 0.3737,
+      "memory": 0.3443
+    },
+    {
+      "m": -0.5443,
+      "baseline": 0.0739,
+      "campaign": 0.3733,
+      "memory": 0.2751
+    },
+    {
+      "m": -0.519,
+      "baseline": 0.0879,
+      "campaign": 0.3733,
+      "memory": 0.2135
+    },
+    {
+      "m": -0.4937,
+      "baseline": 0.1021,
+      "campaign": 0.3736,
+      "memory": 0.159
+    },
+    {
+      "m": -0.4684,
+      "baseline": 0.1162,
+      "campaign": 0.3738,
+      "memory": 0.111
+    },
+    {
+      "m": -0.443,
+      "baseline": 0.1301,
+      "campaign": 0.3738,
+      "memory": 0.0692
+    },
+    {
+      "m": -0.4177,
+      "baseline": 0.1437,
+      "campaign": 0.3735,
+      "memory": 0.0331
+    },
+    {
+      "m": -0.3924,
+      "baseline": 0.1568,
+      "campaign": 0.3727,
+      "memory": 0.0023
+    },
+    {
+      "m": -0.3671,
+      "baseline": 0.1693,
+      "campaign": 0.3712,
+      "memory": -0.0236
+    },
+    {
+      "m": -0.3418,
+      "baseline": 0.1809,
+      "campaign": 0.3689,
+      "memory": -0.045
+    },
+    {
+      "m": -0.3165,
+      "baseline": 0.1917,
+      "campaign": 0.3658,
+      "memory": -0.0624
+    },
+    {
+      "m": -0.2911,
+      "baseline": 0.2015,
+      "campaign": 0.3616,
+      "memory": -0.076
+    },
+    {
+      "m": -0.2658,
+      "baseline": 0.2103,
+      "campaign": 0.3565,
+      "memory": -0.0863
+    },
+    {
+      "m": -0.2405,
+      "baseline": 0.2179,
+      "campaign": 0.3501,
+      "memory": -0.0935
+    },
+    {
+      "m": -0.2152,
+      "baseline": 0.2243,
+      "campaign": 0.3426,
+      "memory": -0.0981
+    },
+    {
+      "m": -0.1899,
+      "baseline": 0.2294,
+      "campaign": 0.3339,
+      "memory": -0.1003
+    },
+    {
+      "m": -0.1646,
+      "baseline": 0.2333,
+      "campaign": 0.3238,
+      "memory": -0.1005
+    },
+    {
+      "m": -0.1392,
+      "baseline": 0.236,
+      "campaign": 0.3125,
+      "memory": -0.0989
+    },
+    {
+      "m": -0.1139,
+      "baseline": 0.2373,
+      "campaign": 0.3,
+      "memory": -0.0959
+    },
+    {
+      "m": -0.0886,
+      "baseline": 0.2374,
+      "campaign": 0.2861,
+      "memory": -0.0916
+    },
+    {
+      "m": -0.0633,
+      "baseline": 0.2362,
+      "campaign": 0.271,
+      "memory": -0.0863
+    },
+    {
+      "m": -0.038,
+      "baseline": 0.2339,
+      "campaign": 0.2548,
+      "memory": -0.0804
+    },
+    {
+      "m": -0.0127,
+      "baseline": 0.2304,
+      "campaign": 0.2373,
+      "memory": -0.0739
+    },
+    {
+      "m": 0.0127,
+      "baseline": 0.2258,
+      "campaign": 0.2188,
+      "memory": -0.0672
+    },
+    {
+      "m": 0.038,
+      "baseline": 0.2202,
+      "campaign": 0.1993,
+      "memory": -0.0604
+    },
+    {
+      "m": 0.0633,
+      "baseline": 0.2137,
+      "campaign": 0.1789,
+      "memory": -0.0537
+    },
+    {
+      "m": 0.0886,
+      "baseline": 0.2065,
+      "campaign": 0.1577,
+      "memory": -0.0472
+    },
+    {
+      "m": 0.1139,
+      "baseline": 0.1985,
+      "campaign": 0.1359,
+      "memory": -0.0412
+    },
+    {
+      "m": 0.1392,
+      "baseline": 0.1901,
+      "campaign": 0.1135,
+      "memory": -0.0358
+    },
+    {
+      "m": 0.1646,
+      "baseline": 0.1812,
+      "campaign": 0.0907,
+      "memory": -0.0311
+    },
+    {
+      "m": 0.1899,
+      "baseline": 0.1722,
+      "campaign": 0.0677,
+      "memory": -0.0272
+    },
+    {
+      "m": 0.2152,
+      "baseline": 0.1631,
+      "campaign": 0.0447,
+      "memory": -0.0243
+    },
+    {
+      "m": 0.2405,
+      "baseline": 0.1541,
+      "campaign": 0.0218,
+      "memory": -0.0224
+    },
+    {
+      "m": 0.2658,
+      "baseline": 0.1455,
+      "campaign": -0.0007,
+      "memory": -0.0217
+    },
+    {
+      "m": 0.2911,
+      "baseline": 0.1375,
+      "campaign": -0.0226,
+      "memory": -0.0221
+    },
+    {
+      "m": 0.3165,
+      "baseline": 0.1303,
+      "campaign": -0.0437,
+      "memory": -0.0238
+    },
+    {
+      "m": 0.3418,
+      "baseline": 0.1242,
+      "campaign": -0.0638,
+      "memory": -0.0267
+    },
+    {
+      "m": 0.3671,
+      "baseline": 0.1194,
+      "campaign": -0.0825,
+      "memory": -0.0309
+    },
+    {
+      "m": 0.3924,
+      "baseline": 0.1162,
+      "campaign": -0.0996,
+      "memory": -0.0365
+    },
+    {
+      "m": 0.4177,
+      "baseline": 0.1149,
+      "campaign": -0.1148,
+      "memory": -0.0434
+    },
+    {
+      "m": 0.443,
+      "baseline": 0.1158,
+      "campaign": -0.1279,
+      "memory": -0.0515
+    },
+    {
+      "m": 0.4684,
+      "baseline": 0.1192,
+      "campaign": -0.1384,
+      "memory": -0.061
+    },
+    {
+      "m": 0.4937,
+      "baseline": 0.1254,
+      "campaign": -0.1461,
+      "memory": -0.0717
+    },
+    {
+      "m": 0.519,
+      "baseline": 0.1348,
+      "campaign": -0.1507,
+      "memory": -0.0836
+    },
+    {
+      "m": 0.5443,
+      "baseline": 0.1477,
+      "campaign": -0.1517,
+      "memory": -0.0966
+    },
+    {
+      "m": 0.5696,
+      "baseline": 0.1645,
+      "campaign": -0.1487,
+      "memory": -0.1106
+    },
+    {
+      "m": 0.5949,
+      "baseline": 0.1857,
+      "campaign": -0.1415,
+      "memory": -0.1256
+    },
+    {
+      "m": 0.6203,
+      "baseline": 0.2115,
+      "campaign": -0.1296,
+      "memory": -0.1414
+    },
+    {
+      "m": 0.6456,
+      "baseline": 0.2425,
+      "campaign": -0.1126,
+      "memory": -0.158
+    },
+    {
+      "m": 0.6709,
+      "baseline": 0.2789,
+      "campaign": -0.09,
+      "memory": -0.1751
+    },
+    {
+      "m": 0.6962,
+      "baseline": 0.3214,
+      "campaign": -0.0615,
+      "memory": -0.1927
+    },
+    {
+      "m": 0.7215,
+      "baseline": 0.3703,
+      "campaign": -0.0266,
+      "memory": -0.2105
+    },
+    {
+      "m": 0.7468,
+      "baseline": 0.4261,
+      "campaign": 0.0153,
+      "memory": -0.2285
+    },
+    {
+      "m": 0.7722,
+      "baseline": 0.4892,
+      "campaign": 0.0645,
+      "memory": -0.2463
+    },
+    {
+      "m": 0.7975,
+      "baseline": 0.5603,
+      "campaign": 0.1216,
+      "memory": -0.2639
+    },
+    {
+      "m": 0.8228,
+      "baseline": 0.6397,
+      "campaign": 0.1871,
+      "memory": -0.2811
+    },
+    {
+      "m": 0.8481,
+      "baseline": 0.728,
+      "campaign": 0.2615,
+      "memory": -0.2975
+    },
+    {
+      "m": 0.8734,
+      "baseline": 0.8258,
+      "campaign": 0.3454,
+      "memory": -0.3129
+    },
+    {
+      "m": 0.8987,
+      "baseline": 0.9335,
+      "campaign": 0.4392,
+      "memory": -0.3271
+    },
+    {
+      "m": 0.9241,
+      "baseline": 1.0519,
+      "campaign": 0.5437,
+      "memory": -0.3399
+    },
+    {
+      "m": 0.9494,
+      "baseline": 1.1814,
+      "campaign": 0.6592,
+      "memory": -0.3509
+    },
+    {
+      "m": 0.9747,
+      "baseline": 1.3226,
+      "campaign": 0.7865,
+      "memory": -0.3598
+    },
+    {
+      "m": 1.0,
+      "baseline": 1.4761,
+      "campaign": 0.9261,
+      "memory": -0.3665
+    }
+  ]
+}

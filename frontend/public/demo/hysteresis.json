@@ -1,0 +1,304 @@
+{
+  "points": [
+    {
+      "h": -1.0,
+      "increasing": -0.9992,
+      "decreasing": -0.9856
+    },
+    {
+      "h": -0.9661,
+      "increasing": -0.9991,
+      "decreasing": -0.9822
+    },
+    {
+      "h": -0.9322,
+      "increasing": -0.9988,
+      "decreasing": -0.9779
+    },
+    {
+      "h": -0.8983,
+      "increasing": -0.9985,
+      "decreasing": -0.9726
+    },
+    {
+      "h": -0.8644,
+      "increasing": -0.9982,
+      "decreasing": -0.9661
+    },
+    {
+      "h": -0.8305,
+      "increasing": -0.9977,
+      "decreasing": -0.9581
+    },
+    {
+      "h": -0.7966,
+      "increasing": -0.9972,
+      "decreasing": -0.9482
+    },
+    {
+      "h": -0.7627,
+      "increasing": -0.9965,
+      "decreasing": -0.936
+    },
+    {
+      "h": -0.7288,
+      "increasing": -0.9957,
+      "decreasing": -0.9211
+    },
+    {
+      "h": -0.6949,
+      "increasing": -0.9946,
+      "decreasing": -0.9029
+    },
+    {
+      "h": -0.661,
+      "increasing": -0.9933,
+      "decreasing": -0.8808
+    },
+    {
+      "h": -0.6271,
+      "increasing": -0.9917,
+      "decreasing": -0.854
+    },
+    {
+      "h": -0.5932,
+      "increasing": -0.9898,
+      "decreasing": -0.8218
+    },
+    {
+      "h": -0.5593,
+      "increasing": -0.9873,
+      "decreasing": -0.7833
+    },
+    {
+      "h": -0.5254,
+      "increasing": -0.9842,
+      "decreasing": -0.7377
+    },
+    {
+      "h": -0.4915,
+      "increasing": -0.9804,
+      "decreasing": -0.6842
+    },
+    {
+      "h": -0.4576,
+      "increasing": -0.9758,
+      "decreasing": -0.6221
+    },
+    {
+      "h": -0.4237,
+      "increasing": -0.97,
+      "decreasing": -0.5511
+    },
+    {
+      "h": -0.3898,
+      "increasing": -0.9628,
+      "decreasing": -0.4711
+    },
+    {
+      "h": -0.3559,
+      "increasing": -0.954,
+      "decreasing": -0.3825
+    },
+    {
+      "h": -0.322,
+      "increasing": -0.9432,
+      "decreasing": -0.2863
+    },
+    {
+      "h": -0.2881,
+      "increasing": -0.93,
+      "decreasing": -0.1839
+    },
+    {
+      "h": -0.2542,
+      "increasing": -0.9137,
+      "decreasing": -0.0774
+    },
+    {
+      "h": -0.2203,
+      "increasing": -0.8939,
+      "decreasing": 0.0309
+    },
+    {
+      "h": -0.1864,
+      "increasing": -0.8699,
+      "decreasing": 0.1385
+    },
+    {
+      "h": -0.1525,
+      "increasing": -0.8409,
+      "decreasing": 0.2429
+    },
+    {
+      "h": -0.1186,
+      "increasing": -0.8061,
+      "decreasing": 0.342
+    },
+    {
+      "h": -0.0847,
+      "increasing": -0.7646,
+      "decreasing": 0.434
+    },
+    {
+      "h": -0.0508,
+      "increasing": -0.7157,
+      "decreasing": 0.5178
+    },
+    {
+      "h": -0.0169,
+      "increasing": -0.6585,
+      "decreasing": 0.5927
+    },
+    {
+      "h": 0.0169,
+      "increasing": -0.5927,
+      "decreasing": 0.6585
+    },
+    {
+      "h": 0.0508,
+      "increasing": -0.5178,
+      "decreasing": 0.7157
+    },
+    {
+      "h": 0.0847,
+      "increasing": -0.434,
+      "decreasing": 0.7646
+    },
+    {
+      "h": 0.1186,
+      "increasing": -0.342,
+      "decreasing": 0.8061
+    },
+    {
+      "h": 0.1525,
+      "increasing": -0.2429,
+      "decreasing": 0.8409
+    },
+    {
+      "h": 0.1864,
+      "increasing": -0.1385,
+      "decreasing": 0.8699
+    },
+    {
+      "h": 0.2203,
+      "increasing": -0.0309,
+      "decreasing": 0.8939
+    },
+    {
+      "h": 0.2542,
+      "increasing": 0.0774,
+      "decreasing": 0.9137
+    },
+    {
+      "h": 0.2881,
+      "increasing": 0.1839,
+      "decreasing": 0.93
+    },
+    {
+      "h": 0.322,
+      "increasing": 0.2863,
+      "decreasing": 0.9432
+    },
+    {
+      "h": 0.3559,
+      "increasing": 0.3825,
+      "decreasing": 0.954
+    },
+    {
+      "h": 0.3898,
+      "increasing": 0.4711,
+      "decreasing": 0.9628
+    },
+    {
+      "h": 0.4237,
+      "increasing": 0.5511,
+      "decreasing": 0.97
+    },
+    {
+      "h": 0.4576,
+      "increasing": 0.6221,
+      "decreasing": 0.9758
+    },
+    {
+      "h": 0.4915,
+      "increasing": 0.6842,
+      "decreasing": 0.9804
+    },
+    {
+      "h": 0.5254,
+      "increasing": 0.7377,
+      "decreasing": 0.9842
+    },
+    {
+      "h": 0.5593,
+      "increasing": 0.7833,
+      "decreasing": 0.9873
+    },
+    {
+      "h": 0.5932,
+      "increasing": 0.8218,
+      "decreasing": 0.9898
+    },
+    {
+      "h": 0.6271,
+      "increasing": 0.854,
+      "decreasing": 0.9917
+    },
+    {
+      "h": 0.661,
+      "increasing": 0.8808,
+      "decreasing": 0.9933
+    },
+    {
+      "h": 0.6949,
+      "increasing": 0.9029,
+      "decreasing": 0.9946
+    },
+    {
+      "h": 0.7288,
+      "increasing": 0.9211,
+      "decreasing": 0.9957
+    },
+    {
+      "h": 0.7627,
+      "increasing": 0.936,
+      "decreasing": 0.9965
+    },
+    {
+      "h": 0.7966,
+      "increasing": 0.9482,
+      "decreasing": 0.9972
+    },
+    {
+      "h": 0.8305,
+      "increasing": 0.9581,
+      "decreasing": 0.9977
+    },
+    {
+      "h": 0.8644,
+      "increasing": 0.9661,
+      "decreasing": 0.9982
+    },
+    {
+      "h": 0.8983,
+      "increasing": 0.9726,
+      "decreasing": 0.9985
+    },
+    {
+      "h": 0.9322,
+      "increasing": 0.9779,
+      "decreasing": 0.9988
+    },
+    {
+      "h": 0.9661,
+      "increasing": 0.9822,
+      "decreasing": 0.9991
+    },
+    {
+      "h": 1.0,
+      "increasing": 0.9856,
+      "decreasing": 0.9992
+    }
+  ]
+}
