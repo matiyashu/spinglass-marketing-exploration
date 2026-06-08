@@ -1,0 +1,16 @@
+asset,group,start_price
+gold,precious_metals,1900.0
+silver,precious_metals,24.0
+platinum,precious_metals,950.0
+palladium,precious_metals,1800.0
+copper,industrial_metals,3.8
+wti_crude,energy,62.0
+brent_crude,energy,66.0
+natural_gas,energy,3.2
+heating_oil,energy,2.1
+wheat,grains,6.0
+corn,grains,4.8
+soybeans,grains,12.5
+coffee,softs,1.5
+sugar,softs,0.16
+cotton,softs,0.78

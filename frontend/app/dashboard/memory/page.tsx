@@ -70,7 +70,7 @@ export default function MemoryPage() {
   const [payload, setPayload] = useState<MemoryPayload | null>(null);
 
   useEffect(() => {
-    if (mode === "demo") demoLoader.memory().then(setPayload);
+    if (mode === "demo-brand") demoLoader.memory().then(setPayload);
   }, [mode]);
 
   return (
@@ -88,11 +88,8 @@ export default function MemoryPage() {
         retrieved.
       </SummaryBox>
 
-      {mode === "live" ? (
-        <EmptyState
-          title="Memory comparison runs on your data"
-          body="Define your target and competitor patterns, then upload a tracker. The live overlap series populates this chart once the optional FastAPI service is running."
-        />
+      {mode !== "demo-brand" ? (
+        <EmptyState expects="brand" mode={mode} />
       ) : (
         payload && (
           <>
@@ -114,6 +111,7 @@ export default function MemoryPage() {
             <ChartCard
               title="Memory overlap by scenario"
               subtitle="Mean overlap between the equilibrium spin distribution and each stored pattern."
+              science="simulation"
               footer="As campaign pressure rises, the system drifts toward the target pattern and away from the competitor pattern."
             >
               <MemoryOverlap payload={payload} />

@@ -185,7 +185,7 @@ export default function FaqPage() {
       <SummaryBox title="Why these questions">
         The questions below come from the assumptions that surprise people first time they see the framing — what a
         coupling really means, why frustration is interesting, what the time axis on a pulse-response chart actually
-        measures, and what the kernel does and does not predict.
+        measures, and what the kernel does and does not simulate.
       </SummaryBox>
       <FaqAccordion items={ITEMS} />
     </>

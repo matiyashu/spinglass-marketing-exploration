@@ -76,7 +76,7 @@ export default function ScenariosPage() {
   const [scenarios, setScenarios] = useState<ScenarioRow[]>([]);
 
   useEffect(() => {
-    if (mode === "demo") demoLoader.scenarios().then((p) => setScenarios(p.scenarios));
+    if (mode === "demo-brand") demoLoader.scenarios().then((p) => setScenarios(p.scenarios));
   }, [mode]);
 
   return (
@@ -94,16 +94,14 @@ export default function ScenariosPage() {
         climbs, competitor overlap falls, and frustration drops.
       </SummaryBox>
 
-      {mode === "live" ? (
-        <EmptyState
-          title="Scenario simulation needs your data + the backend"
-          body="The Glauber sampler runs in Python. Upload your CSV, then start the FastAPI service so the dashboard can simulate baseline / moderate / heavy campaigns against your couplings."
-        />
+      {mode !== "demo-brand" ? (
+        <EmptyState expects="brand" mode={mode} />
       ) : (
         <>
           <ChartCard
             title="Scenario metrics"
             subtitle="Target overlap, purchase probability, and frustration across three campaign pressure levels."
+            science="simulation"
           >
             <ScenarioBars scenarios={scenarios} />
           </ChartCard>

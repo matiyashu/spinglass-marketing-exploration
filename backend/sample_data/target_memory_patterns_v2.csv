@@ -1,0 +1,3 @@
+pattern_name,ad_recall,brand_link,distinctive_asset,trust,value_for_money,premium,fun,personal_relevance,consideration,competitor_salience
+target_memory,1,1,1,1,1,-1,1,1,1,-1
+competitor_memory,-1,-1,-1,-1,-1,1,-1,-1,-1,1

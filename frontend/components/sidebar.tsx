@@ -3,20 +3,21 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  Activity,
   BookOpen,
   ClipboardList,
   FileBarChart,
   Flame,
   HelpCircle,
   Home,
-  MountainSnow,
+  LineChart,
+  Microscope,
   Network,
   Sparkles,
+  TrendingUp,
   Upload,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useMode } from "@/lib/mode";
+import { useMode, type Mode } from "@/lib/mode";
 
 interface NavItem {
   href: string;
@@ -40,19 +41,35 @@ const GROUPS: NavGroup[] = [
     ],
   },
   {
-    title: "Analysis",
+    title: "Commodity · paper-aligned",
+    items: [
+      { href: "/dashboard/commodity", label: "Overview", icon: LineChart },
+      { href: "/dashboard/commodity/couplings", label: "Couplings heatmap", icon: Network },
+      { href: "/dashboard/commodity/rolling", label: "Rolling regime", icon: TrendingUp },
+    ],
+  },
+  {
+    title: "Brand · synthetic application",
     items: [
       { href: "/dashboard/couplings", label: "Couplings", icon: Network },
       { href: "/dashboard/memory", label: "Memory & campaign", icon: Sparkles },
       { href: "/dashboard/scenarios", label: "Scenarios", icon: BookOpen },
-      { href: "/dashboard/landscape", label: "Energy landscape", icon: MountainSnow },
-      { href: "/dashboard/pulse", label: "Pulse response", icon: Activity },
     ],
+  },
+  {
+    title: "Theory · illustrative",
+    items: [{ href: "/dashboard/theory", label: "Theory explainers", icon: Microscope }],
   },
   {
     title: "Output",
     items: [{ href: "/dashboard/reports", label: "Reports", icon: FileBarChart }],
   },
+];
+
+const MODE_BUTTONS: { mode: Mode; label: string; tone: string }[] = [
+  { mode: "demo-commodity", label: "Commodity", tone: "text-primary" },
+  { mode: "demo-brand", label: "Brand", tone: "text-blue-700" },
+  { mode: "live", label: "Live", tone: "text-foreground" },
 ];
 
 export function Sidebar() {
@@ -103,36 +120,33 @@ export function Sidebar() {
       <div className="border-t p-4 space-y-2 text-[11px] text-muted-foreground">
         <p className="font-semibold uppercase tracking-widest text-muted-foreground/80">Mode</p>
         <div className="flex rounded-md border bg-muted/50 p-0.5">
-          <button
-            type="button"
-            onClick={() => setMode("demo")}
-            className={cn(
-              "flex-1 rounded px-2 py-1 text-[11px] font-medium transition-colors",
-              mode === "demo" ? "bg-card text-primary shadow-sm" : "text-muted-foreground hover:text-foreground",
-            )}
-          >
-            Demo
-          </button>
-          <button
-            type="button"
-            onClick={() => setMode("live")}
-            className={cn(
-              "flex-1 rounded px-2 py-1 text-[11px] font-medium transition-colors",
-              mode === "live" ? "bg-card text-blue-700 shadow-sm" : "text-muted-foreground hover:text-foreground",
-            )}
-          >
-            Live
-          </button>
+          {MODE_BUTTONS.map((b) => (
+            <button
+              key={b.mode}
+              type="button"
+              onClick={() => setMode(b.mode)}
+              className={cn(
+                "flex-1 rounded px-2 py-1 text-[10.5px] font-medium transition-colors",
+                mode === b.mode ? `bg-card ${b.tone} shadow-sm` : "text-muted-foreground hover:text-foreground",
+              )}
+            >
+              {b.label}
+            </button>
+          ))}
         </div>
         <div className="flex items-center gap-2 pt-1">
           <span
             className={cn(
               "h-1.5 w-1.5 rounded-full",
-              mode === "demo" ? "bg-emerald-500" : "bg-blue-500",
+              mode === "demo-commodity" ? "bg-emerald-500" : mode === "demo-brand" ? "bg-blue-500" : "bg-amber-500",
             )}
           />
           <span>
-            {mode === "demo" ? "Showing bundled example data" : "Awaiting your uploaded data"}
+            {mode === "demo-commodity"
+              ? "Showing commodity demo"
+              : mode === "demo-brand"
+                ? "Showing brand demo"
+                : "Awaiting your uploaded data"}
           </span>
         </div>
         <Link href="/" className="block pt-1 hover:text-foreground transition-colors">

@@ -70,7 +70,7 @@ export default function PulsePage() {
   const [points, setPoints] = useState<PulsePoint[]>([]);
 
   useEffect(() => {
-    if (mode === "demo") demoLoader.pulse().then((p) => setPoints(p.points));
+    if (mode === "demo-brand") demoLoader.pulse().then((p) => setPoints(p.points));
   }, [mode]);
 
   return (
@@ -88,15 +88,13 @@ export default function PulsePage() {
         &ldquo;campaign ROI&rdquo; if you only look at the short-term signal.
       </SummaryBox>
 
-      {mode === "live" ? (
-        <EmptyState
-          title="Pulse response simulated on your coupling matrix"
-          body="A pulse response needs a time-stepped sampler driven by a finite-window field. Upload your data and start the FastAPI service to populate this view."
-        />
+      {mode !== "demo-brand" ? (
+        <EmptyState expects="brand" mode={mode} />
       ) : (
         <ChartCard
           title="Pulse response"
           subtitle="Aggregate state vs time, under a finite-duration campaign pulse."
+          science="illustrative"
           footer="Time steps are abstract MCMC sweeps. Calibrate to your tracker cadence (weekly or wave) when interpreting."
         >
           <PulseLine points={points} />

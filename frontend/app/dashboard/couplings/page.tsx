@@ -106,7 +106,7 @@ export default function CouplingsPage() {
   const [payload, setPayload] = useState<CouplingPayload | null>(null);
 
   useEffect(() => {
-    if (mode !== "demo") return;
+    if (mode !== "demo-brand") return;
     let alive = true;
     demoLoader.couplings(couplingMode).then((p) => {
       if (alive) setPayload(p);
@@ -133,11 +133,8 @@ export default function CouplingsPage() {
         both axes.
       </SummaryBox>
 
-      {mode === "live" ? (
-        <EmptyState
-          title="Upload your tracker to compute couplings"
-          body="In live mode, this heatmap is computed from your CSV. Bring your data on the Upload tab — the validator will tell you exactly what's missing — then start the optional FastAPI service to populate this view."
-        />
+      {mode !== "demo-brand" ? (
+        <EmptyState expects="brand" mode={mode} />
       ) : (
         <Tabs value={couplingMode} onValueChange={(v) => setCouplingMode(v as CouplingMode)}>
           <TabsList>
@@ -150,6 +147,7 @@ export default function CouplingsPage() {
             <ChartCard
               title={meta.label}
               subtitle={meta.subtitle}
+              science={couplingMode === "mi" ? "experimental" : "measured"}
               footer="Hover any cell for the exact J value. Diagonal cells are zero by convention."
             >
               {payload ? (

@@ -102,7 +102,7 @@ export default function LandscapePage() {
   const [hysteresis, setHysteresis] = useState<HysteresisPoint[]>([]);
 
   useEffect(() => {
-    if (mode !== "demo") return;
+    if (mode !== "demo-brand") return;
     demoLoader.landscape().then((p) => setLandscape(p.points));
     demoLoader.hysteresis().then((p) => setHysteresis(p.points));
   }, [mode]);
@@ -121,16 +121,14 @@ export default function LandscapePage() {
         marketing pressure h depends on whether you arrived from below or above — campaigns are path-dependent.
       </SummaryBox>
 
-      {mode === "live" ? (
-        <EmptyState
-          title="Landscape and hysteresis are simulated on your couplings"
-          body="Both charts depend on a kernel sweep that runs the Glauber sampler at many field strengths. Upload your data and start the FastAPI service to populate them."
-        />
+      {mode !== "demo-brand" ? (
+        <EmptyState expects="brand" mode={mode} />
       ) : (
         <>
           <ChartCard
             title="Energy landscape"
             subtitle="Baseline → during campaign field → after memory reinforcement."
+            science="illustrative"
             footer="A successful long-term campaign deepens the target-side basin so the new minimum survives after the field is removed."
           >
             <EnergyLandscape points={landscape} />
@@ -141,6 +139,7 @@ export default function LandscapePage() {
           <ChartCard
             title="Hysteresis loop"
             subtitle="Aggregate brand state M vs marketing field h, swept up then back down."
+            science="illustrative"
             footer="The width between the two curves is the 'stickiness' budget: once flipped, the state holds at lower maintenance spend."
           >
             <HysteresisCurve points={hysteresis} />
