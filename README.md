@@ -142,6 +142,9 @@ campaign windows that shift their targeted associations, competitor spend that l
 `scripts/generate_v3_marketing_data.py` also writes `expected_outputs/` QA targets that the live endpoints
 reproduce to machine precision (`scripts/verify_v3_endpoints.py`).
 
+> 📖 **Full program manual** — every screen, the formula behind it, how to read the results, and worked use
+> cases: **[docs/DASHBOARD_MANUAL.md](docs/DASHBOARD_MANUAL.md)**.
+
 ---
 
 ## The kernel, in one screen
