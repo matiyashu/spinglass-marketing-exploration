@@ -1,0 +1,86 @@
+{
+  "tables_present": [
+    "campaigns",
+    "competitor",
+    "creative_map",
+    "outcomes",
+    "tracker"
+  ],
+  "methods": [
+    {
+      "method": "brand_couplings",
+      "label": "Brand memory couplings",
+      "requires": [
+        "tracker"
+      ],
+      "enabled": true,
+      "missing": []
+    },
+    {
+      "method": "product_comparison",
+      "label": "Product / vertical comparison",
+      "requires": [
+        "tracker"
+      ],
+      "enabled": true,
+      "missing": []
+    },
+    {
+      "method": "rolling_regime",
+      "label": "Rolling regime",
+      "requires": [
+        "tracker"
+      ],
+      "enabled": true,
+      "missing": []
+    },
+    {
+      "method": "replica_estimation",
+      "label": "Replica / fragmentation",
+      "requires": [
+        "tracker"
+      ],
+      "enabled": true,
+      "missing": []
+    },
+    {
+      "method": "campaign_field",
+      "label": "Campaign field simulation",
+      "requires": [
+        "campaigns",
+        "creative_map"
+      ],
+      "enabled": true,
+      "missing": []
+    },
+    {
+      "method": "observed_response",
+      "label": "Observed pulse response",
+      "requires": [
+        "tracker",
+        "campaigns"
+      ],
+      "enabled": true,
+      "missing": []
+    },
+    {
+      "method": "outcome_validation",
+      "label": "Outcome calibration",
+      "requires": [
+        "outcomes"
+      ],
+      "enabled": true,
+      "missing": []
+    },
+    {
+      "method": "competitive_leakage",
+      "label": "Competitive leakage",
+      "requires": [
+        "tracker",
+        "competitor"
+      ],
+      "enabled": true,
+      "missing": []
+    }
+  ]
+}

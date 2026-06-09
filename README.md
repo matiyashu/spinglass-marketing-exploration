@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <b>What if brand memory were an energy landscape, and a campaign were an external field?</b><br/>
+  <b>Brand Memory &amp; Campaign Dynamics — a marketing diagnostic workbench.</b><br/>
   Ising · Spin-Glass · Hopfield attractors · Glauber dynamics — applied to brand tracking and campaign measurement<br/>
   Made by <a href="https://github.com/matiyashu">Prima Hanura Akbar</a>
 </p>
@@ -26,10 +26,11 @@ Each consumer signal — ad recall, brand link, trust, value-for-money, premium,
 
 The repo ships:
 
-- A small NumPy kernel (`backend/brand_ising_spin_glass.py`) with coupling estimators (signed correlation, Ising, signed mutual-information), a Hopfield memory layer, a Glauber MCMC sampler, mean-field `h`-baseline inference, and metric helpers (`memory_overlap`, `frustration_rate`, `summarize_scenario`).
-- A self-contained simulation + PDF generator (`backend/generate_spin_glass_marketing_report.py`) that reproduces the figures in the included [technical brief](backend/docs/spin_glass_brand_marketing_report.pdf).
-- A reserved `frontend/` folder where the future dashboard will live (see [frontend/README.md](frontend/README.md)).
-- An honest framing of what this is and isn't: a **diagnostic exploration**, not a prediction oracle.
+- A **Next.js dashboard** (`frontend/`) organised around the marketing hierarchy **Brand → Product / Vertical → Market / Segment → Campaign**. A global context selector drives every screen: brand memory maps, tensions and frustrated triads, segment fragmentation, rolling regime, replica/landscape fragmentation, campaign field simulation, and observed validation. Every chart carries a **scientific-status** badge (measured / simulation / illustrative / experimental) and a **data-sufficiency** badge.
+- A small NumPy kernel (`backend/brand_ising_spin_glass.py`) plus a marketing compute layer (`backend/marketing_kernel.py`) with coupling estimators (signed correlation, Ising, signed mutual-information), Hopfield memory, Glauber MCMC, triad frustration, replica overlap P(q), a labelled rigidity proxy, susceptibility, and campaign field construction.
+- An optional **FastAPI** service (`backend/api/`) exposing the marketing endpoints for live compute, plus a synthetic-data pipeline (`backend/scripts/`) that generates a marketing-shaped demo dataset and the bundled JSON the dashboard reads.
+- The commodity **paper benchmark** (the original V2 rolling-couplings workflow) kept as a methodology reference behind a dev flag, plus a PDF [technical brief](backend/docs/spin_glass_brand_marketing_report.pdf).
+- An honest framing of what this is and isn't: a **diagnostic and simulation workbench**, not a prediction oracle. Outcome calibration stays disabled until real sales/conversion data is supplied.
 
 **Why bother.** Standard brand trackers report KPI deltas in isolation. The spin-glass framing forces you to answer the questions KPI tables can't: *do my brand associations move together, or fragment?*, *does this campaign retrieve the memory I intend, or activate the competitor's pattern?*, *is the lift a quick perturbation, or did it deepen a basin?*, *will this impact survive a category shock?*
 
@@ -66,6 +67,29 @@ backend/spin_glass_report_figures/
 ```
 
 The PDF is the full technical brief; the PNGs are the figures rendered standalone.
+
+### Run the dashboard
+
+```bash
+# 1. Generate the marketing demo dataset + bundled JSON (one-shot)
+cd backend
+pip install -r requirements-api.txt
+python scripts/generate_v3_marketing_data.py   # → sample_data/v3_marketing/ + expected_outputs/
+python scripts/dump_v3_demo_json.py            # → frontend/public/demo/v3/*.json
+
+# 2. (optional) live compute backend
+python -m uvicorn api.main:app --port 8000
+
+# 3. the dashboard
+cd ../frontend
+npm install
+npm run dev                                     # http://localhost:3760
+```
+
+The **Demo** workspace runs entirely off the bundled JSON — no backend needed. Switch to the **Live**
+workspace to compute against the FastAPI service. The commodity paper benchmark is hidden unless you set
+`NEXT_PUBLIC_SHOW_METHOD_BENCHMARK=true`. Run `python scripts/verify_v3_endpoints.py` to confirm the live
+endpoints reproduce the demo bundle and `expected_outputs/` to machine precision.
 
 ---
 
@@ -159,28 +183,30 @@ The module is intentionally tiny (~250 LOC, NumPy + pandas). Everything else —
 ```
 spinglass-marketing-exploration/
 ├── README.md
-├── LICENSE
-├── .gitignore
-├── assets/
-│   └── banner.svg
-├── backend/                                       # Python kernel + report builder
-│   ├── README.md
-│   ├── requirements.txt
-│   ├── brand_ising_spin_glass.py                  # the kernel + demo()
+├── LICENSE  ·  .gitignore  ·  assets/banner.svg
+├── backend/                                       # Python kernel + compute + API
+│   ├── brand_ising_spin_glass.py                  # paper-clean kernel + demo()
+│   ├── marketing_kernel.py                        # V3 marketing compute layer
 │   ├── generate_spin_glass_marketing_report.py    # figures + PDF builder
-│   ├── docs/
-│   │   └── spin_glass_brand_marketing_report.pdf  # 12-page technical brief
-│   └── spin_glass_report_figures/                 # rendered PNGs (after running)
-├── frontend/                                      # Reserved for future dashboard
-│   └── README.md
+│   ├── api/                                        # FastAPI live-compute service
+│   │   ├── main.py · routes.py · schemas.py
+│   ├── scripts/                                    # data pipeline + verification
+│   │   ├── generate_v3_marketing_data.py          # synthetic marketing dataset
+│   │   ├── dump_v3_demo_json.py                    # → frontend/public/demo/v3
+│   │   └── verify_v3_endpoints.py                  # reproduction checks
+│   └── sample_data/v3_marketing/                   # CSVs + expected_outputs/ (QA)
+├── frontend/                                      # Next.js 14 dashboard
+│   ├── app/dashboard/                              # workspace / brands / verticals
+│   │   │                                           #  campaigns / dynamics / reports / methods
+│   ├── components/  ·  lib/  (context, workspace, marketing loader)
+│   └── public/demo/v3/                             # bundled demo JSON
+├── docs/                                          # V2 + V3 alignment plans
 └── skills/                                        # LOCAL ONLY — gitignored
-    ├── claude-mem/
-    └── superpowers/
 ```
 
-The split mirrors the planned shape: **backend** is the research kernel and
-report generator today, and will host a FastAPI layer when the dashboard
-arrives; **frontend** is the placeholder for that dashboard.
+**backend** holds the kernel, the marketing compute layer, the FastAPI service and the synthetic-data
+pipeline; **frontend** is the marketing-first dashboard. The generator → dump → bundle pipeline means the
+demo JSON and the live endpoints compute through the same `marketing_kernel`, so they agree by construction.
 
 `skills/` is **excluded from git** via `.gitignore`. It exists only on the local clone for AI-assisted development and never leaves this machine.
 
@@ -236,11 +262,13 @@ The `skills/` entry in `.gitignore` ensures these stay on your machine. Refer to
 
 ## Roadmap
 
-- [ ] Calibrate the kernel against a real brand-tracker wave (binary pick-any data).
-- [ ] Add the *non-equilibrium* response panel: two-time correlation `C(t, t_w)` and pulse `R(t, t')` from real campaign windows.
-- [ ] Implement parameter-chaos overlap `q(T, T+δT)` as a stress-test panel.
-- [ ] Random Field Ising (`η_i`) for explicit consumer heterogeneity.
-- [ ] CLI: `spinglass simulate --tracker my.csv --pattern target.yml`.
+- [x] **V2** — paper-aligned commodity rolling-couplings backend + scientific-status framing.
+- [x] **V3** — marketing-first reframe: brand → product → segment → campaign hierarchy, synthetic marketing
+      dataset, live couplings/tensions/segments/replicas, campaign field simulation vs observed validation,
+      method-status governance, executive + technical reports.
+- [ ] Calibrate against a real brand-tracker wave (binary pick-any data) and fit the outcome-validation layer.
+- [ ] Inverse-Ising (pseudolikelihood) estimator alongside the correlation proxy.
+- [ ] Upload-driven Live workspace: compute on user CSVs end-to-end, not just the bundled sample.
 - [ ] Bridge to [Brand Health Tracker](https://github.com/matiyashu/Brand-Health-Tracker---Mental-Availability-Physical-Availability) — feed its CBM linkage matrix in as the coupling estimator.
 
 ---

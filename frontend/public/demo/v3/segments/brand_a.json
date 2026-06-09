@@ -1,0 +1,83 @@
+{
+  "brand_id": "brand_a",
+  "overlap": {
+    "segments": [
+      "gen_z_urban",
+      "millennial_urban",
+      "value_seekers",
+      "premium_loyalists"
+    ],
+    "matrix": [
+      [
+        1.0000000000000002,
+        0.8883730492370034,
+        0.8994759402270205,
+        0.8689713457681725
+      ],
+      [
+        0.8883730492370034,
+        1.0,
+        0.911411979916349,
+        0.8194896139441193
+      ],
+      [
+        0.8994759402270205,
+        0.911411979916349,
+        1.0000000000000002,
+        0.9480828954255521
+      ],
+      [
+        0.8689713457681725,
+        0.8194896139441193,
+        0.9480828954255521,
+        0.9999999999999998
+      ]
+    ]
+  },
+  "per_segment": [
+    {
+      "segment": "gen_z_urban",
+      "rigidity_proxy": 0.10449279835390948,
+      "avg_signed_coupling": 0.07535951235275858,
+      "avg_abs_coupling_ising": 0.18022991341025119,
+      "largest_eigenvalue_signed": 1.691684268513753,
+      "largest_eigenvalue_ising": 1.7376767166109255,
+      "negative_edge_share": 0.2222222222222222,
+      "avg_mutual_information": 0.16686763869360663,
+      "n_respondents": 2160
+    },
+    {
+      "segment": "millennial_urban",
+      "rigidity_proxy": 0.09252126200274349,
+      "avg_signed_coupling": 0.08230970452437704,
+      "avg_abs_coupling_ising": 0.19317545357055416,
+      "largest_eigenvalue_signed": 1.754101176898132,
+      "largest_eigenvalue_ising": 1.8018455785860132,
+      "negative_edge_share": 0.2222222222222222,
+      "avg_mutual_information": 0.24033210824177328,
+      "n_respondents": 2160
+    },
+    {
+      "segment": "value_seekers",
+      "rigidity_proxy": 0.1377049039780521,
+      "avg_signed_coupling": 0.06912498702494359,
+      "avg_abs_coupling_ising": 0.1689743023002674,
+      "largest_eigenvalue_signed": 1.609019554641791,
+      "largest_eigenvalue_ising": 1.6334550893835766,
+      "negative_edge_share": 0.24444444444444444,
+      "avg_mutual_information": 0.16943280459341076,
+      "n_respondents": 2160
+    },
+    {
+      "segment": "premium_loyalists",
+      "rigidity_proxy": 0.11666923868312759,
+      "avg_signed_coupling": 0.07048309497641626,
+      "avg_abs_coupling_ising": 0.16475705074371336,
+      "largest_eigenvalue_signed": 1.579075476111418,
+      "largest_eigenvalue_ising": 1.5948670306896264,
+      "negative_edge_share": 0.2222222222222222,
+      "avg_mutual_information": 0.28887044369883363,
+      "n_respondents": 2160
+    }
+  ]
+}

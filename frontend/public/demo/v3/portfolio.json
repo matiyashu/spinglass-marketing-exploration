@@ -1,0 +1,26 @@
+{
+  "brands": [
+    {
+      "brand_id": "brand_a",
+      "rigidity_proxy": 0.08277518432784636,
+      "avg_signed_coupling": 0.0795880517900093,
+      "avg_abs_coupling_ising": 0.1897077781885643,
+      "largest_eigenvalue_signed": 1.7123214004045857,
+      "largest_eigenvalue_ising": 1.7665957503589034,
+      "negative_edge_share": 0.24444444444444444,
+      "avg_mutual_information": 0.20265710939483125,
+      "n_respondents": 8640
+    },
+    {
+      "brand_id": "brand_b",
+      "rigidity_proxy": 0.13241636659807957,
+      "avg_signed_coupling": 0.11609328713751957,
+      "avg_abs_coupling_ising": 0.2341567927430535,
+      "largest_eigenvalue_signed": 2.220166618264625,
+      "largest_eigenvalue_ising": 2.229160726346417,
+      "negative_edge_share": 0.2222222222222222,
+      "avg_mutual_information": 0.19092690303753074,
+      "n_respondents": 8640
+    }
+  ]
+}

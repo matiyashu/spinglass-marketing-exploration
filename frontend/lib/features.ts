@@ -97,3 +97,43 @@ export const FEATURE_META: FeatureMeta[] = [
 export const FEATURE_LABEL: Record<Feature, string> = Object.fromEntries(
   FEATURE_META.map((f) => [f.key, f.label]),
 ) as Record<Feature, string>;
+
+// V3: business grouping of the 10 canonical features (awareness → competition).
+export type FeatureGroup =
+  | "awareness"
+  | "linkage"
+  | "meaning"
+  | "relevance"
+  | "funnel"
+  | "competition";
+
+export const FEATURE_GROUP: Record<Feature, FeatureGroup> = {
+  ad_recall: "awareness",
+  brand_link: "linkage",
+  distinctive_asset: "linkage",
+  trust: "meaning",
+  value_for_money: "meaning",
+  premium: "meaning",
+  fun: "meaning",
+  personal_relevance: "relevance",
+  consideration: "funnel",
+  competitor_salience: "competition",
+};
+
+export const GROUP_LABEL: Record<FeatureGroup, string> = {
+  awareness: "Awareness",
+  linkage: "Linkage",
+  meaning: "Meaning",
+  relevance: "Relevance",
+  funnel: "Funnel",
+  competition: "Competition",
+};
+
+export const GROUP_TINT: Record<FeatureGroup, string> = {
+  awareness: "bg-sky-50 text-sky-800",
+  linkage: "bg-indigo-50 text-indigo-800",
+  meaning: "bg-emerald-50 text-emerald-800",
+  relevance: "bg-violet-50 text-violet-800",
+  funnel: "bg-amber-50 text-amber-800",
+  competition: "bg-red-50 text-red-800",
+};

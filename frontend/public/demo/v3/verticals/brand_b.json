@@ -1,0 +1,50 @@
+{
+  "brand_id": "brand_b",
+  "per_product": [
+    {
+      "product_id": "borealis_energy",
+      "label": "Borealis Energy",
+      "vertical_id": "rtd_beverages",
+      "price_tier": "mainstream",
+      "rigidity_proxy": 0.08334823495370369,
+      "competitor_overlap": 0.2722916666666667,
+      "avg_signed_coupling": 0.13251888103045287,
+      "avg_abs_coupling_ising": 0.2624984867673756,
+      "largest_eigenvalue_signed": 2.3886838860520734,
+      "largest_eigenvalue_ising": 2.417386937827156,
+      "negative_edge_share": 0.2222222222222222,
+      "avg_mutual_information": 0.20306528349589525,
+      "n_respondents": 2880
+    },
+    {
+      "product_id": "borealis_sparkling",
+      "label": "Borealis Sparkling",
+      "vertical_id": "rtd_beverages",
+      "price_tier": "value",
+      "rigidity_proxy": 0.14550868055555552,
+      "competitor_overlap": 0.37166666666666665,
+      "avg_signed_coupling": 0.10899050038540839,
+      "avg_abs_coupling_ising": 0.22253313532563823,
+      "largest_eigenvalue_signed": 2.1193365518765916,
+      "largest_eigenvalue_ising": 2.1275314854494947,
+      "negative_edge_share": 0.2222222222222222,
+      "avg_mutual_information": 0.1840789356872175,
+      "n_respondents": 2880
+    },
+    {
+      "product_id": "borealis_trail_mix",
+      "label": "Borealis Trail Mix",
+      "vertical_id": "snacks",
+      "price_tier": "value",
+      "rigidity_proxy": 0.1444462287808642,
+      "competitor_overlap": 0.37118055555555557,
+      "avg_signed_coupling": 0.1138014070788742,
+      "avg_abs_coupling_ising": 0.22832648907862546,
+      "largest_eigenvalue_signed": 2.180204632895328,
+      "largest_eigenvalue_ising": 2.187512522575872,
+      "negative_edge_share": 0.2222222222222222,
+      "avg_mutual_information": 0.19659739612330832,
+      "n_respondents": 2880
+    }
+  ]
+}

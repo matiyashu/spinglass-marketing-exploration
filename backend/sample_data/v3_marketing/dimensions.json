@@ -1,0 +1,225 @@
+{
+  "brands": [
+    {
+      "id": "brand_a",
+      "label": "Aurora"
+    },
+    {
+      "id": "brand_b",
+      "label": "Borealis"
+    }
+  ],
+  "verticals": [
+    {
+      "id": "rtd_beverages",
+      "label": "RTD beverages"
+    },
+    {
+      "id": "snacks",
+      "label": "Snacks"
+    }
+  ],
+  "products": [
+    {
+      "id": "aurora_rtd_coffee",
+      "label": "Aurora Cold Brew",
+      "brand_id": "brand_a",
+      "vertical_id": "rtd_beverages",
+      "price_tier": "premium"
+    },
+    {
+      "id": "aurora_rtd_tea",
+      "label": "Aurora Sparkling Tea",
+      "brand_id": "brand_a",
+      "vertical_id": "rtd_beverages",
+      "price_tier": "mainstream"
+    },
+    {
+      "id": "aurora_protein_bar",
+      "label": "Aurora Protein Bar",
+      "brand_id": "brand_a",
+      "vertical_id": "snacks",
+      "price_tier": "premium"
+    },
+    {
+      "id": "borealis_energy",
+      "label": "Borealis Energy",
+      "brand_id": "brand_b",
+      "vertical_id": "rtd_beverages",
+      "price_tier": "mainstream"
+    },
+    {
+      "id": "borealis_sparkling",
+      "label": "Borealis Sparkling",
+      "brand_id": "brand_b",
+      "vertical_id": "rtd_beverages",
+      "price_tier": "value"
+    },
+    {
+      "id": "borealis_trail_mix",
+      "label": "Borealis Trail Mix",
+      "brand_id": "brand_b",
+      "vertical_id": "snacks",
+      "price_tier": "value"
+    }
+  ],
+  "markets": [
+    {
+      "id": "ID",
+      "label": "Indonesia"
+    },
+    {
+      "id": "PH",
+      "label": "Philippines"
+    },
+    {
+      "id": "VN",
+      "label": "Vietnam"
+    }
+  ],
+  "segments": [
+    {
+      "id": "gen_z_urban",
+      "label": "Gen Z Urban"
+    },
+    {
+      "id": "millennial_urban",
+      "label": "Millennial Urban"
+    },
+    {
+      "id": "value_seekers",
+      "label": "Value Seekers"
+    },
+    {
+      "id": "premium_loyalists",
+      "label": "Premium Loyalists"
+    }
+  ],
+  "campaigns": [
+    {
+      "id": "C001",
+      "label": "C001",
+      "brand_id": "brand_a",
+      "product_id": "aurora_rtd_coffee",
+      "creative_id": "CR001",
+      "market": "ID",
+      "segment": "premium_loyalists",
+      "start_date": "2024-04-01",
+      "end_date": "2024-09-01",
+      "has_outcomes": true
+    },
+    {
+      "id": "C002",
+      "label": "C002",
+      "brand_id": "brand_a",
+      "product_id": "aurora_protein_bar",
+      "creative_id": "CR002",
+      "market": "ID",
+      "segment": "gen_z_urban",
+      "start_date": "2024-07-01",
+      "end_date": "2025-01-01",
+      "has_outcomes": true
+    },
+    {
+      "id": "C003",
+      "label": "C003",
+      "brand_id": "brand_b",
+      "product_id": "borealis_energy",
+      "creative_id": "CR003",
+      "market": "PH",
+      "segment": "gen_z_urban",
+      "start_date": "2024-10-01",
+      "end_date": "2025-04-01",
+      "has_outcomes": true
+    },
+    {
+      "id": "C004",
+      "label": "C004",
+      "brand_id": "brand_b",
+      "product_id": "borealis_sparkling",
+      "creative_id": "CR004",
+      "market": "VN",
+      "segment": "value_seekers",
+      "start_date": "2025-01-01",
+      "end_date": "2025-07-01",
+      "has_outcomes": false
+    },
+    {
+      "id": "C005",
+      "label": "C005",
+      "brand_id": "brand_a",
+      "product_id": "aurora_rtd_tea",
+      "creative_id": "CR005",
+      "market": "PH",
+      "segment": "millennial_urban",
+      "start_date": "2025-04-01",
+      "end_date": "2025-09-01",
+      "has_outcomes": false
+    },
+    {
+      "id": "C006",
+      "label": "C006",
+      "brand_id": "brand_b",
+      "product_id": "borealis_trail_mix",
+      "creative_id": "CR006",
+      "market": "ID",
+      "segment": "value_seekers",
+      "start_date": "2025-07-01",
+      "end_date": "2025-12-01",
+      "has_outcomes": false
+    }
+  ],
+  "features": [
+    {
+      "id": "ad_recall",
+      "label": "Ad recall",
+      "group": "awareness"
+    },
+    {
+      "id": "brand_link",
+      "label": "Brand link",
+      "group": "linkage"
+    },
+    {
+      "id": "distinctive_asset",
+      "label": "Distinctive asset",
+      "group": "linkage"
+    },
+    {
+      "id": "trust",
+      "label": "Trust",
+      "group": "meaning"
+    },
+    {
+      "id": "value_for_money",
+      "label": "Value for money",
+      "group": "meaning"
+    },
+    {
+      "id": "premium",
+      "label": "Premium",
+      "group": "meaning"
+    },
+    {
+      "id": "fun",
+      "label": "Fun",
+      "group": "meaning"
+    },
+    {
+      "id": "personal_relevance",
+      "label": "Personal relevance",
+      "group": "relevance"
+    },
+    {
+      "id": "consideration",
+      "label": "Consideration",
+      "group": "funnel"
+    },
+    {
+      "id": "competitor_salience",
+      "label": "Competitor salience",
+      "group": "competition"
+    }
+  ],
+  "n_waves": 24
+}

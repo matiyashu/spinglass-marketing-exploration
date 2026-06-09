@@ -1,0 +1,117 @@
+{
+  "campaign": {
+    "id": "C006",
+    "label": "C006",
+    "brand_id": "brand_b",
+    "product_id": "borealis_trail_mix",
+    "creative_id": "CR006",
+    "market": "ID",
+    "segment": "value_seekers",
+    "start_date": "2025-07-01",
+    "end_date": "2025-12-01",
+    "has_outcomes": false
+  },
+  "creative_map": [
+    {
+      "creative_id": "CR006",
+      "feature_name": "value_for_money",
+      "target_spin": 1,
+      "intended_strength": 0.9,
+      "evidence_source": "strategy"
+    },
+    {
+      "creative_id": "CR006",
+      "feature_name": "fun",
+      "target_spin": 1,
+      "intended_strength": 0.6,
+      "evidence_source": "strategy"
+    },
+    {
+      "creative_id": "CR006",
+      "feature_name": "personal_relevance",
+      "target_spin": 1,
+      "intended_strength": 0.6,
+      "evidence_source": "strategy"
+    }
+  ],
+  "target_vector": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.9,
+    0.0,
+    0.6,
+    0.6,
+    0.0,
+    0.0
+  ],
+  "phase_overlap": {
+    "pre": -0.31851851851851853,
+    "during": -0.2,
+    "post": null
+  },
+  "phase_means": {
+    "pre": [
+      -0.6444444444444445,
+      -0.5222222222222223,
+      -0.3,
+      -0.45555555555555555,
+      -0.3888888888888889,
+      -0.13333333333333333,
+      -0.06666666666666667,
+      -0.5,
+      -0.5,
+      0.5333333333333333
+    ],
+    "during": [
+      -0.43333333333333335,
+      -0.4666666666666667,
+      -0.1,
+      -0.13333333333333333,
+      -0.2,
+      -0.2,
+      -0.13333333333333333,
+      -0.26666666666666666,
+      -0.3,
+      0.23333333333333334
+    ],
+    "post": null
+  },
+  "features": [
+    "ad_recall",
+    "brand_link",
+    "distinctive_asset",
+    "trust",
+    "value_for_money",
+    "premium",
+    "fun",
+    "personal_relevance",
+    "consideration",
+    "competitor_salience"
+  ],
+  "simulation": [
+    {
+      "spend": 0.0,
+      "target_overlap": 0.16516666666666666,
+      "competitor_overlap": -0.21850000000000003,
+      "frustration": 0.2607962962962963,
+      "rigidity_proxy": 0.07580250000000002
+    },
+    {
+      "spend": 0.22,
+      "target_overlap": 0.6083333333333333,
+      "competitor_overlap": -0.7363333333333334,
+      "frustration": 0.19974074074074077,
+      "rigidity_proxy": 0.5750511111111112
+    },
+    {
+      "spend": 0.45,
+      "target_overlap": 0.7036666666666666,
+      "competitor_overlap": -0.8206666666666667,
+      "frustration": 0.16155555555555556,
+      "rigidity_proxy": 0.7083761111111111
+    }
+  ],
+  "has_outcomes": false
+}

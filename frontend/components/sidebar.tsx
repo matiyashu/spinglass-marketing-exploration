@@ -3,21 +3,33 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+  Activity,
+  Beaker,
   BookOpen,
-  ClipboardList,
+  ClipboardCheck,
+  Database,
   FileBarChart,
-  Flame,
+  FileText,
+  FlaskConical,
+  GitCompare,
   HelpCircle,
   Home,
+  Layers,
   LineChart,
-  Microscope,
   Network,
+  Radio,
+  Shield,
   Sparkles,
+  Split,
+  Target,
   TrendingUp,
   Upload,
+  Users,
+  Workflow,
+  Zap,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useMode, type Mode } from "@/lib/mode";
+import { useWorkspace, SHOW_BENCHMARK, type Workspace } from "@/lib/workspace";
 
 interface NavItem {
   href: string;
@@ -32,58 +44,88 @@ interface NavGroup {
 
 const GROUPS: NavGroup[] = [
   {
-    title: "Get started",
+    title: "Workspace",
     items: [
-      { href: "/dashboard", label: "Overview", icon: Home },
-      { href: "/dashboard/data-requirements", label: "Data requirements", icon: ClipboardList },
-      { href: "/dashboard/upload", label: "Upload data", icon: Upload },
+      { href: "/dashboard", label: "Home", icon: Home },
+      { href: "/dashboard/data", label: "Data setup", icon: Database },
+      { href: "/dashboard/upload", label: "Import & validation", icon: Upload },
+      { href: "/dashboard/method-status", label: "Method status", icon: ClipboardCheck },
       { href: "/dashboard/faq", label: "FAQ", icon: HelpCircle },
     ],
   },
   {
-    title: "Commodity · paper-aligned",
+    title: "Brand portfolio",
     items: [
-      { href: "/dashboard/commodity", label: "Overview", icon: LineChart },
-      { href: "/dashboard/commodity/couplings", label: "Couplings heatmap", icon: Network },
-      { href: "/dashboard/commodity/rolling", label: "Rolling regime", icon: TrendingUp },
+      { href: "/dashboard/brands", label: "Portfolio overview", icon: Layers },
+      { href: "/dashboard/brands/memory-map", label: "Brand memory map", icon: Network },
+      { href: "/dashboard/brands/tensions", label: "Brand tensions", icon: Split },
+      { href: "/dashboard/brands/competitive-leakage", label: "Competitive leakage", icon: Shield },
     ],
   },
   {
-    title: "Brand · synthetic application",
+    title: "Product / vertical",
     items: [
-      { href: "/dashboard/couplings", label: "Couplings", icon: Network },
-      { href: "/dashboard/memory", label: "Memory & campaign", icon: Sparkles },
-      { href: "/dashboard/scenarios", label: "Scenarios", icon: BookOpen },
+      { href: "/dashboard/verticals", label: "Vertical overview", icon: TrendingUp },
+      { href: "/dashboard/verticals/product-memory-fit", label: "Product memory fit", icon: Target },
+      { href: "/dashboard/verticals/segment-differences", label: "Segment differences", icon: Users },
+      { href: "/dashboard/verticals/switching-risk", label: "Switching risk", icon: GitCompare },
     ],
   },
   {
-    title: "Theory · illustrative",
-    items: [{ href: "/dashboard/theory", label: "Theory explainers", icon: Microscope }],
+    title: "Campaigns",
+    items: [
+      { href: "/dashboard/campaigns", label: "Campaign overview", icon: Radio },
+      { href: "/dashboard/campaigns/creative-memory", label: "Creative memory pattern", icon: Sparkles },
+      { href: "/dashboard/campaigns/field-response", label: "Field response", icon: Zap },
+      { href: "/dashboard/campaigns/simulator", label: "Scenario simulator", icon: Beaker },
+      { href: "/dashboard/campaigns/validation", label: "Observed validation", icon: ClipboardCheck },
+    ],
   },
   {
-    title: "Output",
-    items: [{ href: "/dashboard/reports", label: "Reports", icon: FileBarChart }],
+    title: "Dynamics & stability",
+    items: [
+      { href: "/dashboard/dynamics/rolling-regime", label: "Rolling regime", icon: LineChart },
+      { href: "/dashboard/dynamics/persistence", label: "Memory persistence", icon: Activity },
+      { href: "/dashboard/dynamics/replicas", label: "Replica / fragmentation", icon: Workflow },
+      { href: "/dashboard/dynamics/stress-test", label: "Stress test", icon: Shield },
+    ],
+  },
+  {
+    title: "Reports",
+    items: [
+      { href: "/dashboard/reports/executive", label: "Executive report", icon: FileBarChart },
+      { href: "/dashboard/reports/technical-appendix", label: "Technical appendix", icon: FileText },
+    ],
+  },
+  {
+    title: "Methods",
+    items: [
+      { href: "/dashboard/methods/glossary", label: "Model glossary", icon: BookOpen },
+      { href: "/dashboard/theory", label: "Theory explainers", icon: FlaskConical },
+      ...(SHOW_BENCHMARK
+        ? [{ href: "/dashboard/commodity", label: "Paper benchmark", icon: LineChart }]
+        : []),
+    ],
   },
 ];
 
-const MODE_BUTTONS: { mode: Mode; label: string; tone: string }[] = [
-  { mode: "demo-commodity", label: "Commodity", tone: "text-primary" },
-  { mode: "demo-brand", label: "Brand", tone: "text-blue-700" },
-  { mode: "live", label: "Live", tone: "text-foreground" },
+const WORKSPACE_BUTTONS: { ws: Workspace; label: string; tone: string }[] = [
+  { ws: "demo", label: "Demo", tone: "text-primary" },
+  { ws: "live", label: "Live", tone: "text-foreground" },
 ];
 
 export function Sidebar() {
   const pathname = usePathname();
-  const [mode, setMode] = useMode();
+  const [workspace, setWorkspace] = useWorkspace();
   return (
     <aside className="hidden md:flex md:w-64 md:flex-col border-r bg-card">
       <div className="flex h-16 items-center gap-2 border-b px-5">
         <div className="grid h-9 w-9 place-items-center rounded-md bg-primary/15 text-primary">
-          <Flame className="h-4 w-4" />
+          <Network className="h-4 w-4" />
         </div>
         <div className="min-w-0">
           <p className="text-sm font-semibold leading-tight tracking-tight">Spin-Glass</p>
-          <p className="text-[11px] text-muted-foreground leading-tight">Marketing exploration</p>
+          <p className="text-[11px] text-muted-foreground leading-tight">Brand Memory &amp; Campaign Dynamics</p>
         </div>
       </div>
       <nav className="flex-1 overflow-y-auto px-3 py-4 text-sm">
@@ -118,16 +160,16 @@ export function Sidebar() {
         ))}
       </nav>
       <div className="border-t p-4 space-y-2 text-[11px] text-muted-foreground">
-        <p className="font-semibold uppercase tracking-widest text-muted-foreground/80">Mode</p>
+        <p className="font-semibold uppercase tracking-widest text-muted-foreground/80">Workspace</p>
         <div className="flex rounded-md border bg-muted/50 p-0.5">
-          {MODE_BUTTONS.map((b) => (
+          {WORKSPACE_BUTTONS.map((b) => (
             <button
-              key={b.mode}
+              key={b.ws}
               type="button"
-              onClick={() => setMode(b.mode)}
+              onClick={() => setWorkspace(b.ws)}
               className={cn(
-                "flex-1 rounded px-2 py-1 text-[10.5px] font-medium transition-colors",
-                mode === b.mode ? `bg-card ${b.tone} shadow-sm` : "text-muted-foreground hover:text-foreground",
+                "flex-1 rounded px-2 py-1 text-[11px] font-medium transition-colors",
+                workspace === b.ws ? `bg-card ${b.tone} shadow-sm` : "text-muted-foreground hover:text-foreground",
               )}
             >
               {b.label}
@@ -135,19 +177,8 @@ export function Sidebar() {
           ))}
         </div>
         <div className="flex items-center gap-2 pt-1">
-          <span
-            className={cn(
-              "h-1.5 w-1.5 rounded-full",
-              mode === "demo-commodity" ? "bg-emerald-500" : mode === "demo-brand" ? "bg-blue-500" : "bg-amber-500",
-            )}
-          />
-          <span>
-            {mode === "demo-commodity"
-              ? "Showing commodity demo"
-              : mode === "demo-brand"
-                ? "Showing brand demo"
-                : "Awaiting your uploaded data"}
-          </span>
+          <span className={cn("h-1.5 w-1.5 rounded-full", workspace === "demo" ? "bg-emerald-500" : "bg-amber-500")} />
+          <span>{workspace === "demo" ? "Bundled demo dataset" : "Live compute via FastAPI"}</span>
         </div>
         <Link href="/" className="block pt-1 hover:text-foreground transition-colors">
           ← back to landing

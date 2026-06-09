@@ -149,3 +149,49 @@ class PatternsOverlapResponse(BaseModel):
     target_share: float
     competitor_share: float
     samples: int
+
+
+# ----- V3 marketing endpoints -----
+
+
+class MarketingContextModel(BaseModel):
+    brand_id: str | None = None
+    product_id: str | None = None
+    vertical_id: str | None = None
+    market: str | None = None
+    segment: str | None = None
+    campaign_id: str | None = None
+
+
+class MarketingRequest(BaseModel):
+    """Generic marketing compute request.
+
+    Either supply ``rows`` (a tracker panel) or set ``use_sample`` to compute
+    against the backend's bundled v3 marketing sample. ``context`` filters it.
+    """
+
+    context: MarketingContextModel | None = None
+    rows: list[dict[str, float | str]] | None = None
+    use_sample: bool = False
+    mode: Literal["spin_glass", "ising", "mi"] = "spin_glass"
+    window: int = 6
+    step: int = 1
+
+
+class CampaignSimRequest(BaseModel):
+    context: MarketingContextModel | None = None
+    use_sample: bool = True
+    target_pattern: list[int] | None = None
+    competitor_pattern: list[int] | None = None
+    spend_levels: list[float] = [0.0, 0.22, 0.45]
+    memory_strength: float = 0.18
+
+
+class DataStatusRequest(BaseModel):
+    use_sample: bool = True
+    tables_present: list[str] | None = None
+
+
+class MarketingValidateRequest(BaseModel):
+    rows: list[dict[str, float | str]]
+    min_rows: int = 50

@@ -1,0 +1,128 @@
+{
+  "campaign": {
+    "id": "C004",
+    "label": "C004",
+    "brand_id": "brand_b",
+    "product_id": "borealis_sparkling",
+    "creative_id": "CR004",
+    "market": "VN",
+    "segment": "value_seekers",
+    "start_date": "2025-01-01",
+    "end_date": "2025-07-01",
+    "has_outcomes": false
+  },
+  "creative_map": [
+    {
+      "creative_id": "CR004",
+      "feature_name": "value_for_money",
+      "target_spin": 1,
+      "intended_strength": 1.0,
+      "evidence_source": "strategy"
+    },
+    {
+      "creative_id": "CR004",
+      "feature_name": "consideration",
+      "target_spin": 1,
+      "intended_strength": 0.7,
+      "evidence_source": "strategy"
+    },
+    {
+      "creative_id": "CR004",
+      "feature_name": "premium",
+      "target_spin": -1,
+      "intended_strength": 0.5,
+      "evidence_source": "strategy"
+    }
+  ],
+  "target_vector": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    -0.5,
+    0.0,
+    0.0,
+    0.7,
+    0.0
+  ],
+  "phase_overlap": {
+    "pre": -0.18333333333333332,
+    "during": -0.11428571428571427,
+    "post": -0.29333333333333333
+  },
+  "phase_means": {
+    "pre": [
+      -0.5333333333333333,
+      -0.5,
+      -0.35,
+      -0.03333333333333333,
+      -0.13333333333333333,
+      -0.1,
+      -0.35,
+      -0.3,
+      -0.5166666666666667,
+      0.6
+    ],
+    "during": [
+      -0.4857142857142857,
+      -0.42857142857142855,
+      -0.34285714285714286,
+      -0.02857142857142857,
+      -0.17142857142857143,
+      -0.22857142857142856,
+      -0.4,
+      -0.4857142857142857,
+      -0.4,
+      0.5142857142857142
+    ],
+    "post": [
+      -0.72,
+      -0.56,
+      -0.52,
+      -0.44,
+      -0.24,
+      -0.04,
+      -0.32,
+      -0.56,
+      -0.68,
+      0.68
+    ]
+  },
+  "features": [
+    "ad_recall",
+    "brand_link",
+    "distinctive_asset",
+    "trust",
+    "value_for_money",
+    "premium",
+    "fun",
+    "personal_relevance",
+    "consideration",
+    "competitor_salience"
+  ],
+  "simulation": [
+    {
+      "spend": 0.0,
+      "target_overlap": 0.1015,
+      "competitor_overlap": -0.18516666666666665,
+      "frustration": 0.2746851851851852,
+      "rigidity_proxy": 0.06349972222222222
+    },
+    {
+      "spend": 0.22,
+      "target_overlap": 0.4773333333333333,
+      "competitor_overlap": -0.6589999999999999,
+      "frustration": 0.24181481481481484,
+      "rigidity_proxy": 0.4778433333333333
+    },
+    {
+      "spend": 0.45,
+      "target_overlap": 0.5713333333333332,
+      "competitor_overlap": -0.7193333333333333,
+      "frustration": 0.2240740740740741,
+      "rigidity_proxy": 0.5791033333333334
+    }
+  ],
+  "has_outcomes": false
+}

@@ -1,0 +1,50 @@
+{
+  "brand_id": "brand_a",
+  "per_product": [
+    {
+      "product_id": "aurora_rtd_coffee",
+      "label": "Aurora Cold Brew",
+      "vertical_id": "rtd_beverages",
+      "price_tier": "premium",
+      "rigidity_proxy": 0.10701060956790123,
+      "competitor_overlap": 0.29638888888888887,
+      "avg_signed_coupling": 0.07955973089985592,
+      "avg_abs_coupling_ising": 0.18204260497415525,
+      "largest_eigenvalue_signed": 1.7296840579381563,
+      "largest_eigenvalue_ising": 1.7485462215325984,
+      "negative_edge_share": 0.2222222222222222,
+      "avg_mutual_information": 0.15787296087297667,
+      "n_respondents": 2880
+    },
+    {
+      "product_id": "aurora_rtd_tea",
+      "label": "Aurora Sparkling Tea",
+      "vertical_id": "rtd_beverages",
+      "price_tier": "mainstream",
+      "rigidity_proxy": 0.10327136381172838,
+      "competitor_overlap": 0.2872916666666667,
+      "avg_signed_coupling": 0.07499066723942077,
+      "avg_abs_coupling_ising": 0.1781273596226359,
+      "largest_eigenvalue_signed": 1.5842931166479204,
+      "largest_eigenvalue_ising": 1.6485226657561962,
+      "negative_edge_share": 0.24444444444444444,
+      "avg_mutual_information": 0.19944479028478088,
+      "n_respondents": 2880
+    },
+    {
+      "product_id": "aurora_protein_bar",
+      "label": "Aurora Protein Bar",
+      "vertical_id": "snacks",
+      "price_tier": "premium",
+      "rigidity_proxy": 0.09656500771604938,
+      "competitor_overlap": 0.27652777777777776,
+      "avg_signed_coupling": 0.07812505953919838,
+      "avg_abs_coupling_ising": 0.18398201233952396,
+      "largest_eigenvalue_signed": 1.7499057371206108,
+      "largest_eigenvalue_ising": 1.7724003876402745,
+      "negative_edge_share": 0.24444444444444444,
+      "avg_mutual_information": 0.2136889649746252,
+      "n_respondents": 2880
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+product_id,brand_id,vertical_id,product_name,price_tier,target_segment,launch_date
+aurora_rtd_coffee,brand_a,rtd_beverages,Aurora Cold Brew,premium,premium_loyalists,2023-06-01
+aurora_rtd_tea,brand_a,rtd_beverages,Aurora Sparkling Tea,mainstream,millennial_urban,2023-06-01
+aurora_protein_bar,brand_a,snacks,Aurora Protein Bar,premium,gen_z_urban,2023-06-01
+borealis_energy,brand_b,rtd_beverages,Borealis Energy,mainstream,gen_z_urban,2023-06-01
+borealis_sparkling,brand_b,rtd_beverages,Borealis Sparkling,value,value_seekers,2023-06-01
+borealis_trail_mix,brand_b,snacks,Borealis Trail Mix,value,value_seekers,2023-06-01

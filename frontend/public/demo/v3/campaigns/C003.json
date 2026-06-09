@@ -1,0 +1,186 @@
+{
+  "campaign": {
+    "id": "C003",
+    "label": "C003",
+    "brand_id": "brand_b",
+    "product_id": "borealis_energy",
+    "creative_id": "CR003",
+    "market": "PH",
+    "segment": "gen_z_urban",
+    "start_date": "2024-10-01",
+    "end_date": "2025-04-01",
+    "has_outcomes": true
+  },
+  "creative_map": [
+    {
+      "creative_id": "CR003",
+      "feature_name": "ad_recall",
+      "target_spin": 1,
+      "intended_strength": 1.0,
+      "evidence_source": "strategy"
+    },
+    {
+      "creative_id": "CR003",
+      "feature_name": "fun",
+      "target_spin": 1,
+      "intended_strength": 0.9,
+      "evidence_source": "strategy"
+    },
+    {
+      "creative_id": "CR003",
+      "feature_name": "brand_link",
+      "target_spin": 1,
+      "intended_strength": 1.0,
+      "evidence_source": "strategy"
+    },
+    {
+      "creative_id": "CR003",
+      "feature_name": "competitor_salience",
+      "target_spin": -1,
+      "intended_strength": 0.8,
+      "evidence_source": "strategy"
+    }
+  ],
+  "target_vector": [
+    1.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.9,
+    0.0,
+    0.0,
+    -0.8
+  ],
+  "phase_overlap": {
+    "pre": -0.3111111111111111,
+    "during": 0.05,
+    "post": -0.3625
+  },
+  "phase_means": {
+    "pre": [
+      -0.3111111111111111,
+      -0.17777777777777778,
+      -0.17777777777777778,
+      -0.28888888888888886,
+      -0.1111111111111111,
+      -0.24444444444444444,
+      -0.4666666666666667,
+      -0.4666666666666667,
+      -0.3111111111111111,
+      0.28888888888888886
+    ],
+    "during": [
+      0.05714285714285714,
+      0.2,
+      -0.17142857142857143,
+      -0.2,
+      -0.17142857142857143,
+      -0.02857142857142857,
+      -0.2857142857142857,
+      -0.22857142857142856,
+      0.0,
+      -0.22857142857142856
+    ],
+    "post": [
+      -0.35,
+      -0.425,
+      -0.225,
+      -0.5,
+      -0.1,
+      -0.05,
+      -0.1,
+      -0.25,
+      -0.65,
+      0.575
+    ]
+  },
+  "features": [
+    "ad_recall",
+    "brand_link",
+    "distinctive_asset",
+    "trust",
+    "value_for_money",
+    "premium",
+    "fun",
+    "personal_relevance",
+    "consideration",
+    "competitor_salience"
+  ],
+  "simulation": [
+    {
+      "spend": 0.0,
+      "target_overlap": 0.12633333333333335,
+      "competitor_overlap": -0.12633333333333335,
+      "frustration": 0.23222222222222225,
+      "rigidity_proxy": 0.03976888888888889
+    },
+    {
+      "spend": 0.22,
+      "target_overlap": 0.8003333333333333,
+      "competitor_overlap": -0.8003333333333333,
+      "frustration": 0.16629629629629633,
+      "rigidity_proxy": 0.6743555555555555
+    },
+    {
+      "spend": 0.45,
+      "target_overlap": 0.8848333333333332,
+      "competitor_overlap": -0.8848333333333332,
+      "frustration": 0.11512962962962967,
+      "rigidity_proxy": 0.8081491666666667
+    }
+  ],
+  "has_outcomes": true,
+  "outcomes": [
+    {
+      "date": "2024-10-01",
+      "brand_lift": 0.01,
+      "roas": 3.0,
+      "cpa": 12.0,
+      "conversions": 800
+    },
+    {
+      "date": "2024-11-01",
+      "brand_lift": 0.025,
+      "roas": 3.2,
+      "cpa": 11.5,
+      "conversions": 900
+    },
+    {
+      "date": "2024-12-01",
+      "brand_lift": 0.036,
+      "roas": 3.4,
+      "cpa": 11.0,
+      "conversions": 1000
+    },
+    {
+      "date": "2025-01-01",
+      "brand_lift": 0.04,
+      "roas": 3.6,
+      "cpa": 10.5,
+      "conversions": 1100
+    },
+    {
+      "date": "2025-02-01",
+      "brand_lift": 0.036,
+      "roas": 3.8,
+      "cpa": 10.0,
+      "conversions": 1200
+    },
+    {
+      "date": "2025-03-01",
+      "brand_lift": 0.025,
+      "roas": 4.0,
+      "cpa": 9.5,
+      "conversions": 1300
+    },
+    {
+      "date": "2025-04-01",
+      "brand_lift": 0.01,
+      "roas": 4.2,
+      "cpa": 9.0,
+      "conversions": 1400
+    }
+  ]
+}

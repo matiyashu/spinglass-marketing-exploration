@@ -22,8 +22,12 @@ from brand_ising_spin_glass import (  # noqa: E402
 )
 
 from .schemas import (  # noqa: E402
+    CampaignSimRequest,
     CouplingRequest,
     CouplingResponse,
+    DataStatusRequest,
+    MarketingRequest,
+    MarketingValidateRequest,
     PatternsOverlapRequest,
     PatternsOverlapResponse,
     ReportRequest,
@@ -40,6 +44,8 @@ from .schemas import (  # noqa: E402
     ValidateResponse,
     ValidationCheck,
 )
+
+import marketing_kernel as mk  # noqa: E402
 
 router = APIRouter()
 
@@ -268,3 +274,151 @@ def patterns_overlap(req: PatternsOverlapRequest) -> PatternsOverlapResponse:
         competitor_share=competitor_share,
         samples=n_samples,
     )
+
+
+# ----- V3 marketing endpoints (compute via marketing_kernel) -----
+
+_SAMPLE_DIR = BACKEND / "sample_data" / "v3_marketing"
+_BRAND_TARGET = np.array([1, 1, 1, 1, 1, 1, 1, 1, 1, -1])
+_COMPETITOR = np.array([-1, -1, -1, -1, -1, -1, -1, -1, -1, 1])
+_tracker_cache: pd.DataFrame | None = None
+
+
+def _sample_tracker() -> pd.DataFrame:
+    global _tracker_cache
+    if _tracker_cache is None:
+        path = _SAMPLE_DIR / "brand_tracker_panel.csv"
+        if not path.exists():
+            raise HTTPException(status_code=503, detail="v3 marketing sample not generated; run generate_v3_marketing_data.py")
+        _tracker_cache = pd.read_csv(path)
+    return _tracker_cache
+
+
+def _resolve_tracker(req: MarketingRequest) -> pd.DataFrame:
+    if req.rows:
+        df = pd.DataFrame(req.rows)
+    elif req.use_sample:
+        df = _sample_tracker()
+    else:
+        raise HTTPException(status_code=400, detail="supply rows or set use_sample=true")
+    ctx = req.context.model_dump() if req.context else None
+    return mk.filter_context(df, ctx)
+
+
+@router.post("/data/status")
+def data_status(req: DataStatusRequest) -> dict:
+    if req.tables_present is not None:
+        tables = set(req.tables_present)
+    elif req.use_sample:
+        tables = {"tracker", "campaigns", "creative_map", "outcomes", "competitor"}
+    else:
+        tables = set()
+    return {"tables_present": sorted(tables), "methods": mk.method_status(tables)}
+
+
+@router.post("/data/validate")
+def data_validate(req: MarketingValidateRequest) -> dict:
+    if not req.rows:
+        return {"row_count": 0, "has_errors": True, "checks": [{"id": "empty", "level": "error", "label": "Payload is empty"}]}
+    df = pd.DataFrame(req.rows)
+    checks = []
+    missing = [f for f in mk.FEATURES if f not in df.columns]
+    checks.append(
+        {"id": "features", "level": "error" if missing else "ok",
+         "label": f"Missing feature columns: {missing}" if missing else "All 10 canonical features present"}
+    )
+    has_ctx = any(c in df.columns for c in ("brand_id", "date"))
+    checks.append({"id": "context", "level": "ok" if has_ctx else "warning",
+                   "label": "Context columns present" if has_ctx else "No brand_id/date columns — context filtering disabled"})
+    checks.append({"id": "rows", "level": "ok" if len(df) >= req.min_rows else "error",
+                   "label": f"{len(df)} rows ({'>=' if len(df) >= req.min_rows else '<'} {req.min_rows})"})
+    has_errors = any(c["level"] == "error" for c in checks)
+    return {"row_count": len(df), "has_errors": has_errors, "checks": checks}
+
+
+def _coupling_payload(df: pd.DataFrame) -> dict:
+    spins = mk.tracker_spins(df)
+    sg = mk.coupling_matrix(spins, "spin_glass")
+    return {
+        "features": FEATURES,
+        "labels": [mk.FEATURE_LABEL[f] for f in FEATURES],
+        "groups": [mk.FEATURE_GROUP[f] for f in FEATURES],
+        "spin_glass": sg.tolist(),
+        "ising": mk.coupling_matrix(spins, "ising").tolist(),
+        "mi": mk.coupling_matrix(spins, "mi").tolist(),
+        "top": mk.top_couplings(sg),
+        "triads": mk.triad_frustration(sg),
+        "rigidity_proxy": mk.rigidity_proxy(spins),
+        "summary": mk.static_summary(df),
+    }
+
+
+@router.post("/marketing/couplings/static")
+def marketing_couplings_static(req: MarketingRequest) -> dict:
+    return _coupling_payload(_resolve_tracker(req))
+
+
+@router.post("/marketing/couplings/rolling")
+def marketing_couplings_rolling(req: MarketingRequest) -> dict:
+    df = _resolve_tracker(req)
+    brand = req.context.brand_id if req.context else None
+    return {"brand_id": brand, "records": mk.rolling_couplings(df, window=req.window, step=req.step)}
+
+
+@router.post("/marketing/couplings/compare-estimators")
+def marketing_compare_estimators(req: MarketingRequest) -> dict:
+    spins = mk.tracker_spins(_resolve_tracker(req))
+    sg = mk.coupling_matrix(spins, "spin_glass")
+    mi = mk.coupling_matrix(spins, "mi")
+    return {"features": FEATURES, "spin_glass": mk.top_couplings(sg), "mi": mk.top_couplings(mi)}
+
+
+@router.post("/patterns/competitive-leakage")
+def patterns_competitive_leakage(req: MarketingRequest) -> dict:
+    df = _resolve_tracker(req)
+    waves = sorted(df["date"].unique()) if "date" in df.columns else []
+    series = [{"date": str(w), **mk.competitive_leakage(df[df["date"] == w], _COMPETITOR)} for w in waves]
+    return {"series": series, "overall": mk.competitive_leakage(df, _COMPETITOR)}
+
+
+@router.post("/verticals/segment-differences")
+def verticals_segment_differences(req: MarketingRequest) -> dict:
+    df = _resolve_tracker(req)
+    segments = sorted(df["segment"].unique()) if "segment" in df.columns else []
+    per_seg = []
+    for seg in segments:
+        ss = df[df["segment"] == seg]
+        per_seg.append({"segment": seg, "rigidity_proxy": mk.rigidity_proxy(mk.tracker_spins(ss)), **mk.static_summary(ss)})
+    return {"overlap": mk.segment_overlap_matrix(df, segments), "per_segment": per_seg}
+
+
+@router.post("/replicas/bootstrap")
+def replicas_bootstrap(req: MarketingRequest) -> dict:
+    spins = mk.tracker_spins(_resolve_tracker(req))
+    return {"estimation": mk.bootstrap_replicas(spins), "rigidity_proxy": mk.rigidity_proxy(spins)}
+
+
+@router.post("/replicas/landscape")
+def replicas_landscape(req: MarketingRequest) -> dict:
+    spins = mk.tracker_spins(_resolve_tracker(req))
+    j = corr_couplings(spins, mode="spin_glass", scale=0.55)
+    h = infer_mean_field_baseline(spins, j, beta=1.0)
+    return {"landscape": mk.landscape_replicas(j, h, beta=1.0, n_chains=12)}
+
+
+@router.post("/campaigns/simulate")
+def campaigns_simulate(req: CampaignSimRequest) -> dict:
+    df = _sample_tracker() if req.use_sample else None
+    if df is None:
+        raise HTTPException(status_code=400, detail="use_sample required")
+    ctx = req.context.model_dump() if req.context else None
+    spins = mk.tracker_spins(mk.filter_context(df, ctx))
+    target = np.asarray(req.target_pattern) if req.target_pattern else _BRAND_TARGET
+    competitor = np.asarray(req.competitor_pattern) if req.competitor_pattern else _COMPETITOR
+    return {"simulation": mk.simulate_campaign(spins, target, competitor, req.spend_levels, req.memory_strength)}
+
+
+@router.post("/stability/susceptibility")
+def stability_susceptibility(req: MarketingRequest) -> dict:
+    spins = mk.tracker_spins(_resolve_tracker(req))
+    return {"susceptibility": mk.susceptibility(spins)}

@@ -1,0 +1,186 @@
+{
+  "campaign": {
+    "id": "C002",
+    "label": "C002",
+    "brand_id": "brand_a",
+    "product_id": "aurora_protein_bar",
+    "creative_id": "CR002",
+    "market": "ID",
+    "segment": "gen_z_urban",
+    "start_date": "2024-07-01",
+    "end_date": "2025-01-01",
+    "has_outcomes": true
+  },
+  "creative_map": [
+    {
+      "creative_id": "CR002",
+      "feature_name": "fun",
+      "target_spin": 1,
+      "intended_strength": 1.0,
+      "evidence_source": "strategy"
+    },
+    {
+      "creative_id": "CR002",
+      "feature_name": "personal_relevance",
+      "target_spin": 1,
+      "intended_strength": 0.8,
+      "evidence_source": "strategy"
+    },
+    {
+      "creative_id": "CR002",
+      "feature_name": "brand_link",
+      "target_spin": 1,
+      "intended_strength": 0.9,
+      "evidence_source": "strategy"
+    },
+    {
+      "creative_id": "CR002",
+      "feature_name": "competitor_salience",
+      "target_spin": -1,
+      "intended_strength": 1.0,
+      "evidence_source": "strategy"
+    }
+  ],
+  "target_vector": [
+    0.0,
+    0.9,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.8,
+    0.0,
+    -1.0
+  ],
+  "phase_overlap": {
+    "pre": -0.3,
+    "during": -0.04285714285714286,
+    "post": -0.42272727272727273
+  },
+  "phase_means": {
+    "pre": [
+      -0.2,
+      -0.23333333333333334,
+      -0.23333333333333334,
+      -0.06666666666666667,
+      -0.26666666666666666,
+      -0.5,
+      -0.43333333333333335,
+      -0.36666666666666664,
+      -0.3,
+      0.16666666666666666
+    ],
+    "during": [
+      -0.17142857142857143,
+      0.3142857142857143,
+      0.3142857142857143,
+      -0.08571428571428572,
+      -0.14285714285714285,
+      -0.4,
+      -0.2857142857142857,
+      -0.45714285714285713,
+      -0.14285714285714285,
+      -0.2571428571428571
+    ],
+    "post": [
+      -0.4727272727272727,
+      -0.5454545454545454,
+      -0.14545454545454545,
+      -0.21818181818181817,
+      -0.2545454545454545,
+      0.0,
+      -0.5272727272727272,
+      -0.2727272727272727,
+      -0.5454545454545454,
+      0.34545454545454546
+    ]
+  },
+  "features": [
+    "ad_recall",
+    "brand_link",
+    "distinctive_asset",
+    "trust",
+    "value_for_money",
+    "premium",
+    "fun",
+    "personal_relevance",
+    "consideration",
+    "competitor_salience"
+  ],
+  "simulation": [
+    {
+      "spend": 0.0,
+      "target_overlap": -0.0825,
+      "competitor_overlap": 0.0825,
+      "frustration": 0.32464814814814813,
+      "rigidity_proxy": 0.01400472222222222
+    },
+    {
+      "spend": 0.22,
+      "target_overlap": 0.6513333333333333,
+      "competitor_overlap": -0.6513333333333333,
+      "frustration": 0.24029629629629629,
+      "rigidity_proxy": 0.42998888888888886
+    },
+    {
+      "spend": 0.45,
+      "target_overlap": 0.8341666666666666,
+      "competitor_overlap": -0.8341666666666666,
+      "frustration": 0.15075925925925926,
+      "rigidity_proxy": 0.7000819444444444
+    }
+  ],
+  "has_outcomes": true,
+  "outcomes": [
+    {
+      "date": "2024-07-01",
+      "brand_lift": 0.01,
+      "roas": 3.0,
+      "cpa": 12.0,
+      "conversions": 800
+    },
+    {
+      "date": "2024-08-01",
+      "brand_lift": 0.025,
+      "roas": 3.2,
+      "cpa": 11.5,
+      "conversions": 900
+    },
+    {
+      "date": "2024-09-01",
+      "brand_lift": 0.036,
+      "roas": 3.4,
+      "cpa": 11.0,
+      "conversions": 1000
+    },
+    {
+      "date": "2024-10-01",
+      "brand_lift": 0.04,
+      "roas": 3.6,
+      "cpa": 10.5,
+      "conversions": 1100
+    },
+    {
+      "date": "2024-11-01",
+      "brand_lift": 0.036,
+      "roas": 3.8,
+      "cpa": 10.0,
+      "conversions": 1200
+    },
+    {
+      "date": "2024-12-01",
+      "brand_lift": 0.025,
+      "roas": 4.0,
+      "cpa": 9.5,
+      "conversions": 1300
+    },
+    {
+      "date": "2025-01-01",
+      "brand_lift": 0.01,
+      "roas": 4.2,
+      "cpa": 9.0,
+      "conversions": 1400
+    }
+  ]
+}

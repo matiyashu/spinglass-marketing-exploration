@@ -1,0 +1,128 @@
+{
+  "campaign": {
+    "id": "C005",
+    "label": "C005",
+    "brand_id": "brand_a",
+    "product_id": "aurora_rtd_tea",
+    "creative_id": "CR005",
+    "market": "PH",
+    "segment": "millennial_urban",
+    "start_date": "2025-04-01",
+    "end_date": "2025-09-01",
+    "has_outcomes": false
+  },
+  "creative_map": [
+    {
+      "creative_id": "CR005",
+      "feature_name": "distinctive_asset",
+      "target_spin": 1,
+      "intended_strength": 1.0,
+      "evidence_source": "strategy"
+    },
+    {
+      "creative_id": "CR005",
+      "feature_name": "brand_link",
+      "target_spin": 1,
+      "intended_strength": 0.8,
+      "evidence_source": "strategy"
+    },
+    {
+      "creative_id": "CR005",
+      "feature_name": "trust",
+      "target_spin": 1,
+      "intended_strength": 0.5,
+      "evidence_source": "strategy"
+    }
+  ],
+  "target_vector": [
+    0.0,
+    0.8,
+    1.0,
+    0.5,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "phase_overlap": {
+    "pre": -0.3466666666666667,
+    "during": -0.17777777777777778,
+    "post": -0.3111111111111111
+  },
+  "phase_means": {
+    "pre": [
+      -0.52,
+      -0.4666666666666667,
+      -0.4,
+      -0.17333333333333334,
+      -0.04,
+      -0.08,
+      -0.09333333333333334,
+      -0.24,
+      -0.22666666666666666,
+      0.38666666666666666
+    ],
+    "during": [
+      -0.4,
+      -0.4666666666666667,
+      -0.06666666666666667,
+      0.0,
+      -0.3,
+      -0.5,
+      -0.2,
+      0.0,
+      -0.26666666666666666,
+      0.3333333333333333
+    ],
+    "post": [
+      -0.6666666666666666,
+      -0.5333333333333333,
+      -0.3333333333333333,
+      -0.06666666666666667,
+      0.0,
+      -0.4,
+      0.0,
+      -0.2,
+      -0.06666666666666667,
+      0.5333333333333333
+    ]
+  },
+  "features": [
+    "ad_recall",
+    "brand_link",
+    "distinctive_asset",
+    "trust",
+    "value_for_money",
+    "premium",
+    "fun",
+    "personal_relevance",
+    "consideration",
+    "competitor_salience"
+  ],
+  "simulation": [
+    {
+      "spend": 0.0,
+      "target_overlap": -0.07166666666666667,
+      "competitor_overlap": 0.12033333333333333,
+      "frustration": 0.34722222222222227,
+      "rigidity_proxy": 0.022534444444444447
+    },
+    {
+      "spend": 0.22,
+      "target_overlap": 0.47616666666666674,
+      "competitor_overlap": -0.5061666666666668,
+      "frustration": 0.3025,
+      "rigidity_proxy": 0.27453416666666663
+    },
+    {
+      "spend": 0.45,
+      "target_overlap": 0.6715,
+      "competitor_overlap": -0.7214999999999999,
+      "frustration": 0.22609259259259262,
+      "rigidity_proxy": 0.5489852777777778
+    }
+  ],
+  "has_outcomes": false
+}

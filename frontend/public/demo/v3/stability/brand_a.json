@@ -1,0 +1,45 @@
+{
+  "brand_id": "brand_a",
+  "susceptibility": [
+    {
+      "feature": "competitor_salience",
+      "chi": 1.4555555555555555
+    },
+    {
+      "feature": "distinctive_asset",
+      "chi": 1.077777777777778
+    },
+    {
+      "feature": "brand_link",
+      "chi": 1.0555555555555556
+    },
+    {
+      "feature": "premium",
+      "chi": 0.9777777777777779
+    },
+    {
+      "feature": "ad_recall",
+      "chi": 0.7555555555555556
+    },
+    {
+      "feature": "consideration",
+      "chi": 0.7444444444444445
+    },
+    {
+      "feature": "value_for_money",
+      "chi": 0.7222222222222223
+    },
+    {
+      "feature": "personal_relevance",
+      "chi": 0.6555555555555556
+    },
+    {
+      "feature": "trust",
+      "chi": 0.4777777777777778
+    },
+    {
+      "feature": "fun",
+      "chi": 0.388888888888889
+    }
+  ]
+}
