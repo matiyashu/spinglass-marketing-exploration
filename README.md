@@ -9,10 +9,10 @@
 </p>
 
 <p align="center">
-  <img alt="status" src="https://img.shields.io/badge/stage-exploration-7c3aed?style=flat-square"/>
+  <img alt="version" src="https://img.shields.io/badge/version-V3%20marketing--first-7c3aed?style=flat-square"/>
+  <img alt="dashboard" src="https://img.shields.io/badge/dashboard-Next.js%2014%20%C2%B7%2034%20routes-000000?style=flat-square"/>
   <img alt="theory" src="https://img.shields.io/badge/theory-Ising%20%C2%B7%20Spin--glass%20%C2%B7%20Hopfield-0a7a3f?style=flat-square"/>
-  <img alt="kernel" src="https://img.shields.io/badge/kernel-NumPy%20%C2%B7%20Glauber%20MCMC-3776ab?style=flat-square"/>
-  <img alt="report" src="https://img.shields.io/badge/report-reportlab%20PDF-10b981?style=flat-square"/>
+  <img alt="kernel" src="https://img.shields.io/badge/compute-NumPy%20%C2%B7%20FastAPI%20%C2%B7%20Glauber%20MCMC-3776ab?style=flat-square"/>
   <img alt="license" src="https://img.shields.io/badge/license-MIT-blue?style=flat-square"/>
 </p>
 
@@ -38,58 +38,45 @@ The repo ships:
 
 ---
 
-## Quick start
+## Quick start — the dashboard
 
 ```bash
 git clone https://github.com/matiyashu/spinglass-marketing-exploration.git
-cd spinglass-marketing-exploration/backend
+cd spinglass-marketing-exploration
 
-python -m venv .venv
-.venv\Scripts\activate          # Windows
-# source .venv/bin/activate     # macOS / Linux
-
-pip install -r requirements.txt
-
-python brand_ising_spin_glass.py                  # CLI demo of the kernel
-python generate_spin_glass_marketing_report.py    # full PDF + figures
-```
-
-That produces:
-
-```
-backend/docs/spin_glass_brand_marketing_report.pdf
-backend/spin_glass_report_figures/
-    scenario_metrics.png
-    signed_coupling_heatmap.png
-    pulse_response.png
-    hysteresis.png
-    energy_landscape.png
-```
-
-The PDF is the full technical brief; the PNGs are the figures rendered standalone.
-
-### Run the dashboard
-
-```bash
 # 1. Generate the marketing demo dataset + bundled JSON (one-shot)
 cd backend
-pip install -r requirements-api.txt
-python scripts/generate_v3_marketing_data.py   # → sample_data/v3_marketing/ + expected_outputs/
-python scripts/dump_v3_demo_json.py            # → frontend/public/demo/v3/*.json
+python -m venv .venv && .venv\Scripts\activate     # Windows; or: source .venv/bin/activate
+pip install -r requirements-api.txt                #  (pulls in requirements.txt too)
+python scripts/generate_v3_marketing_data.py       # → sample_data/v3_marketing/ + expected_outputs/
+python scripts/dump_v3_demo_json.py                # → frontend/public/demo/v3/*.json
 
-# 2. (optional) live compute backend
-python -m uvicorn api.main:app --port 8000
+# 2. (optional) live-compute backend
+python -m uvicorn api.main:app --port 8000         # http://localhost:8000/docs
 
 # 3. the dashboard
 cd ../frontend
 npm install
-npm run dev                                     # http://localhost:3760
+npm run dev                                        # http://localhost:3760
 ```
 
 The **Demo** workspace runs entirely off the bundled JSON — no backend needed. Switch to the **Live**
-workspace to compute against the FastAPI service. The commodity paper benchmark is hidden unless you set
-`NEXT_PUBLIC_SHOW_METHOD_BENCHMARK=true`. Run `python scripts/verify_v3_endpoints.py` to confirm the live
-endpoints reproduce the demo bundle and `expected_outputs/` to machine precision.
+workspace to compute against the FastAPI service. The commodity paper benchmark is hidden from the nav unless
+you set `NEXT_PUBLIC_SHOW_METHOD_BENCHMARK=true`. Run `python scripts/verify_v3_endpoints.py` to confirm the
+live endpoints reproduce the demo bundle and `expected_outputs/` to machine precision.
+
+### Kernel & PDF brief (optional CLI)
+
+```bash
+cd backend
+python brand_ising_spin_glass.py                   # CLI demo of the kernel
+python generate_spin_glass_marketing_report.py     # 12-page PDF + 5 standalone figures
+```
+
+→ `backend/docs/spin_glass_brand_marketing_report.pdf` and `backend/spin_glass_report_figures/*.png`
+(signed coupling heatmap, scenario metrics, pulse response, hysteresis, energy landscape). The pulse,
+hysteresis and energy-landscape figures are *illustrative theory* — they also appear under Methods › Theory
+explainers in the dashboard.
 
 ---
 
@@ -119,27 +106,41 @@ Glauber sampling explores the landscape; reading off `m_μ`, frustration, and co
 
 ---
 
-## What the simulation actually shows
+## Inside the dashboard
 
-The bundled demo runs a 10-feature synthetic tracker (ad recall, brand link, distinctive asset, trust, value, premium, fun, personal relevance, consideration, competitor salience). It builds a "true" coupling matrix from two stored patterns (target + competitor) plus a handful of known category tensions, samples a synthetic panel, re-estimates couplings empirically, then runs three campaign scenarios.
+Every screen answers a marketing question for a chosen **brand → product → vertical → market → segment →
+campaign**, picked once in the context bar and inherited everywhere. Two workspaces: **Demo** (bundled
+synthetic data, no backend) and **Live** (computes through the FastAPI service).
 
-| Scenario | Target overlap | Competitor overlap | Purchase prob. | Frustration |
-|---------|---------------:|-------------------:|---------------:|------------:|
-| baseline | -0.18 | +0.18 | 0.21 | 0.42 |
-| moderate | +0.32 | −0.32 | 0.58 | 0.40 |
-| heavy   | +0.61 | −0.61 | 0.80 | 0.29 |
+| Section | Screens | Answers |
+|---|---|---|
+| **Brand portfolio** | Portfolio overview · Memory map · Tensions · Competitive leakage | What does the brand mean, and where is it coherent vs contradictory? |
+| **Product / vertical** | Vertical overview · Product memory fit · Segment differences · Switching risk | Which product / audience encodes the brand differently? |
+| **Campaigns** | Overview · Creative memory pattern · Field response · Scenario simulator · Observed validation | What did the creative intend, what actually moved, was it durable? |
+| **Dynamics & stability** | Rolling regime · Memory persistence · Replica / fragmentation · Stress test | Is the structure stable over waves, segments and shocks? |
+| **Reports** | Executive report · Technical appendix | A context-scoped summary plus the formulas behind it. |
+| **Methods** | Model glossary · Theory explainers · Paper benchmark *(dev flag)* | Definitions, illustrative theory, and the commodity reference. |
 
-As campaign pressure rises, the system drifts toward the **target** memory pattern, away from the **competitor** pattern, and frustration drops — i.e., the brand starts to *mean one consistent thing* again.
+### Every chart is labelled twice
 
-Five figures unpack what is moving:
+This is the discipline that keeps the framing honest:
 
-| Figure | What it shows |
-|---|---|
-| **Signed coupling heatmap** | Which associations reinforce vs which pull against each other in the recovered J. |
-| **Scenario metrics** | Overlap, frustration, and purchase probability across baseline → moderate → heavy. |
-| **Pulse response** | Same field input → either fast buzz that decays *or* a residual memory tail. |
-| **Hysteresis curve** | Brand state under increasing vs decreasing pressure are not the same path. |
-| **Energy landscape** | Campaign field tilts the basin; *durable* impact deepens the target minimum. |
+- **Scientific status** — `measured` (estimated from data) · `simulation` (from declared parameters) ·
+  `illustrative` (mathematical form, not data) · `experimental` (unvalidated heuristic, e.g. signed MI).
+- **Data sufficiency** — whether the *currently supplied* data enables a method. Outcome validation stays
+  disabled until you ship outcome data; there is deliberately **no purchase-probability forecast** until a
+  validated outcome model exists. Replica analysis keeps *landscape* (simulation) and *estimation-stability*
+  (bootstrap) P(q) in **separate** panels — a broad P(q) in a finite panel is a competing-meanings signal,
+  not a claim of replica-symmetry breaking.
+
+### The demo dataset
+
+A synthetic but marketing-shaped panel: **2 brands × 3 products × 2 verticals × 3 markets × 4 segments ×
+24 monthly tracker waves × 6 campaigns**, ten association features, and *partial* outcomes (so the UI can show
+methods enabling and disabling honestly). The generator bakes in real signal — segment-varying couplings,
+campaign windows that shift their targeted associations, competitor spend that lifts competitor salience.
+`scripts/generate_v3_marketing_data.py` also writes `expected_outputs/` QA targets that the live endpoints
+reproduce to machine precision (`scripts/verify_v3_endpoints.py`).
 
 ---
 
@@ -229,9 +230,9 @@ The detailed math, formulas, and a full applied-use-cases section live in [the P
 
 ## What this is not
 
-- **Not a forecasting model.** It's diagnostic and structural. The "purchase probability" in the demo is a logit of overlap + consideration − competitor − frustration, calibrated on synthetic data, not a real MMM.
+- **Not a forecasting model.** It's diagnostic and structural. There is **no purchase-probability or sales forecast** in the dashboard — outcome calibration stays disabled until you supply real sales/conversion data and fit the validation layer. The simulator is explicitly labelled *simulation from declared parameters*.
 - **Not a replacement for brand-lift studies, MMM, or longitudinal tracking.** It's a *lens* you point at those inputs to read structure that single-KPI tables hide.
-- **Not Ising-only.** The signed-correlation (spin-glass) view is the centerpiece — the Ising version is included as a synchronization benchmark, because suppressing the signs loses the most interesting marketing structure (the *tensions*).
+- **Not Ising-only.** The signed-correlation (spin-glass) view is the centerpiece — the Ising `|corr|` version is included as a synchronization benchmark, because suppressing the signs loses the most interesting marketing structure (the *tensions*).
 - **Not yet calibrated to a real tracker.** All numbers in the demo come from a synthetic panel. Calibration to a real Brand Health Tracker wave is the natural next step.
 
 ---
