@@ -158,13 +158,24 @@ export default function LandingPage() {
           })}
         </section>
 
-        <footer className="mt-auto pt-12 text-xs text-muted-foreground">
+        <footer className="mt-auto space-y-3 pt-12 text-xs text-muted-foreground">
           <p>
             A diagnostic and simulation workbench — not a forecasting oracle. The bundled dataset is synthetic, and
             outcome calibration stays disabled until real sales or conversion data is supplied. The commodity paper
             benchmark lives under Methods. See the{" "}
             <a href="/dashboard/faq" className="text-primary hover:underline">FAQ</a> for what each science and
             data-sufficiency badge means.
+          </p>
+          <p className="border-t pt-3">
+            Built by{" "}
+            <a
+              href="https://github.com/matiyashu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-foreground hover:text-primary hover:underline"
+            >
+              Prima Hanura Akbar
+            </a>
           </p>
         </footer>
       </div>
